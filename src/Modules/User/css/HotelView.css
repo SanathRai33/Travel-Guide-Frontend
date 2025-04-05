@@ -1,0 +1,166 @@
+.hotel-view-container {
+    width: 1000px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+    scroll-behavior: smooth;
+  }
+
+  [id] {
+    scroll-margin-top: 200px;
+  }
+  
+  .hotel-view-container .back-button {
+    margin-bottom: 15px;
+    position: relative;
+    right: 640px;
+    top: 0px;
+  }
+
+  .premium-delight {
+    background: #FFD700; 
+    color: #8B6508;
+  }
+  
+  .ultimate-comfort {
+    background: #1E90FF; 
+    color: #FFFFFF;
+  }
+  
+  .elite-stay {
+    background: #32CD32; 
+    color: #FFFFFF;
+  }
+  
+  .romantic-getaway {
+    background: #FF69B4; 
+    color: #FFFFFF;
+  }
+  
+  .exclusive-deal {
+    background: #8B0000; 
+    color: #FFFFFF;
+  }
+  
+  .hotel-view-container .hotel-main-image {
+    min-width: 100%;
+    height: 450px;
+    object-fit: cover;
+    border-radius: 10px;
+    z-index: 1;
+    opacity: 0.5;
+    background: black;
+  }
+
+  .hotel-view-container .hotel-second-image{
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 400px;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 10px;
+    z-index: 10;
+  }
+
+  .hotel-view-container .hotel-main-info{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+  }
+
+  .hotel-view-container .hotel-main-top{
+    display: flex;
+    width: 100%;
+    align-items: end;
+    justify-content: start;
+    gap: 20px;
+  }
+  
+  .hotel-view-container .hotel-name {
+    font-weight: 800;
+    padding-bottom: 1px;
+    color: black;
+    font-family:'Arial Narrow Bold', sans-serif;
+  }
+  
+  .hotel-view-container .hotel-location {
+    color: gray;
+    margin-bottom: 10px;
+  }
+  
+  .hotel-view-container .hotel-rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-weight: bold;
+  }
+  
+  .hotel-view-container .hotel-link{
+    display: flex;
+    gap: 30px;
+    padding: 15px;
+  }
+
+  .hotel-view-container .hotel-link a{
+    font-weight: 700;
+    color: black;
+    border-bottom: 1px solid transparent;
+    min-width: 60px;
+  }
+
+  .hotel-view-container .hotel-link a:hover{
+    border-bottom: 1px solid black;
+  }
+
+  .hotel-view-container .hotel-link a.active{
+    color: red;
+  }
+
+  .hotel-view-container .hotel-link a:active{
+    border-bottom: 1px solid black;
+  }
+
+  .hotel-view-container .hotel-price {
+    font-size: 24px;
+    color: #e63946;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  .hotel-view-container .hotel-deal {
+    font-size: 16px;
+    padding: 5px 10px;
+    margin: 15px 0;
+  }
+  
+  .hotel-view-container .hotel-description {
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  
+  .hotel-view-container .hotel-facilities-heading {
+    margin-top: 20px;
+    font-weight: bold;
+    text-align: start;
+  }
+  
+  .hotel-view-container .hotel-facilities {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin: 10px 0 20px 0;
+  }
+  
+  .hotel-view-container .facility-chip {
+    font-size: 14px;
+    padding: 5px;
+  }
+  
+  .hotel-view-container .hotel-dates{
+    display: flex;
+    gap: 30px;
+  }

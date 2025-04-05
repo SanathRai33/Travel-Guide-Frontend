@@ -1,0 +1,148 @@
+.hotel-page {
+  display: flex;
+  padding: 20px;
+  gap: 20px;
+  position: relative;
+  align-items: flex-start;
+  overflow: visible; 
+  min-height: 80vh;
+}
+
+
+.hotel-page .hotel-sidebar {
+  min-width: 400px;
+  width: 400px;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  position: sticky;
+  top: 130px;
+  max-height: 90vh; 
+  overflow-y: auto; 
+}
+
+.hotel-page .hotel-sidebar h6 {
+  margin-top: 10px;
+  color: #000;
+}
+
+
+.hotel-page .hotel-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px 30px;
+}
+
+
+.hotel-page .hotel-card {
+  display: flex;
+  width: 500px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+  background: #fff;
+}
+
+
+.hotel-page .hotel-image {
+  width: 200px;
+  height: 100%;
+  min-width: 200px;
+  min-height: 100%;
+  object-fit: cover;
+}
+
+
+.hotel-page .hotel-info {
+  padding: 15px;
+  width: 100%;
+}
+
+
+.hotel-page .deal-badge {
+  background: lightgreen;
+  color: green;
+  font-size: 12px;
+  padding: 3px 7px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+
+.hotel-page .hotel-rating {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+
+.hotel-page .hotel-facilities {
+  min-height: 111px;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 12px;
+  gap: 5px;
+}
+
+.hotel-page .facility {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+
+.hotel-page .hotel-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.hotel-page .hotel-price {
+  font-size: 20px;
+  font-weight: bold;
+  color: green;
+}
+
+
+.hotel-page .view-prices-btn {
+  background-color: #007bff !important;
+}
+
+
+
+@media (max-width: 768px) {
+  .hotel-page .hotel-page {
+    flex-direction: column;
+  }
+
+  .hotel-page .hotel-sidebar {
+    width: 100%;
+    position: relative; 
+  }
+
+  .hotel-page .hotel-list {
+    justify-content: center;
+  }
+
+  .hotel-page .hotel-card {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.hotel-page .not-found {
+  font-size: 1.5rem;
+  color: #ff0000;
+  font-weight: bold;
+  animation: blink 2s infinite;
+}

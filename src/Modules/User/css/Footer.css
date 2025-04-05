@@ -1,0 +1,228 @@
+.footer *{
+    margin: 0;
+    padding: 0;
+}
+
+.footer{
+    background-color: black;
+    color: whitesmoke;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.footer .footTop{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.footer .footTop .scl-mda{
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.footer .footTop .ftr-icn{
+    width: 35px;
+    height: 35px;
+    margin: 5px 10px;
+    padding: 5px;
+    background-color: grey;
+    color: black;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.footer .footTop .rating{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 5px;
+    background-color: green;
+    padding: 5px;
+}
+
+.footer .footTop .links{
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    padding: 30px ;
+    column-gap: 50px;
+}
+
+.footer .links .quick,.footer .links .support,.footer .links .help{
+    display: flex;
+    flex-direction: column;
+}
+
+.footer .footTop .links a{
+    color: grey;
+    text-decoration: none;
+    padding-left: 10px;
+}
+
+.footer .footTop .payment{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.footer .footTop .payment .pay{
+    width: 130px;
+    height: 130px;
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.footer .footTop .pay img{
+    object-fit: contain;
+    object-position: center;
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+    background-color: white;
+}
+
+.footer .footBottom{
+    margin: 10px 0;
+    padding: 30px 10px;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 0.1vw solid rgba(255, 255, 255, 0.805);
+}
+
+.footer .footBottom .app{
+    display: flex;
+    gap: 20px;
+}
+
+.footer .footBottom .app .playstore, .footer .footBottom .app .appstore{
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding: 1px 5px 3px 5px;
+    min-width: 170px;
+    gap: 2px;
+    border: 1px solid white;
+}
+
+.footer .app .playstore .img{
+    height: 40px;
+    width: 40px;
+    background-image: url('../Images/app1.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.footer .app .appstore .img{
+    height: 40px;
+    width: 40px;
+    background-image: url('../Images/app2.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+
+@media (max-width: 1024px) {
+    .footer .footTop .links {
+        flex-wrap: wrap;
+        justify-content: space-around;
+        column-gap: 20px;
+    }
+    
+    .footer .footTop .payment .pay {
+        width: 100px;
+        height: 100px;
+    }
+
+    .footer .footBottom {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer .footBottom .app {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .footer .footTop .scl-mda {
+        flex-wrap: wrap;
+    }
+
+    .footer .footTop .ftr-icn {
+        width: 30px;
+        height: 30px;
+        margin: 3px;
+    }
+
+    .footer .footTop .links {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .footer .footTop .links a {
+        padding-left: 0;
+        font-size: 0.9em;
+    }
+
+    .footer .footBottom {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    .footer .footBottom .app {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .footer .footBottom .copyright h6 {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer .footTop .rating {
+        flex-direction: column;
+        gap: 5px;
+        font-size: 0.9em;
+    }
+
+    .footer .footTop .payment .pay {
+        width: 80px;
+        height: 80px;
+    }
+
+    .footer .footBottom .app {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .footer .footBottom .app .playstore, 
+    .footer .footBottom .app .appstore {
+        min-width: 140px;
+        padding: 5px;
+    }
+}

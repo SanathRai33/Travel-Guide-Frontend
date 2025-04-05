@@ -1,0 +1,325 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* General Reset */
+.Nav * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Navbar Container */
+.Nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+  width: 100%;
+  background-color: oklch(0.28 0.03 257.69);
+  padding: 0 32px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+/* Logo and Links Section */
+.Nav .logo-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.Nav .brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.Nav .brand img {
+  width: 44px;
+  height: 44px;
+  mix-blend-mode: lighten;
+}
+
+.Nav .brand .name {
+  color: wheat;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: 1.2rem;
+}
+
+.Nav .links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.Nav .links a {
+  font-size: 14px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: white;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.Nav .links a.active {
+  color: oklch(0.87 0.01 0);
+  background-color: oklch(0.21 0.03 263.45);
+}
+
+.Nav .links a:hover {
+  color: rgb(179, 167, 167);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Notifications and Profile Section */
+.Nav .notify-profile {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.Nav .notify-profile button {
+  height: 40px;
+  width: 100px;
+  background-color: #227bc4;
+  color: black;
+  border-radius: 5px;
+  border: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.Nav .notify-profile button:hover {
+  background-color: #03355e;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.Nav .notify-profile .cart {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.Nav .notify-profile .cart:hover {
+  color: rgb(179, 167, 167);
+}
+
+.Nav .notify-profile .notific {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  color: oklch(0.71 0.02 261.83);
+  border-radius: 50%;
+  border: 2px solid oklch(0.71 0.02 261.83);
+  background-color: transparent;
+  transition: all 0.3s ease;
+}
+
+.Nav .notify-profile .notific:hover {
+  color: white;
+  border-color: white;
+}
+
+.Nav .notify-profile .profile {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.Nav .notify-profile .profile img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #fff;
+  object-fit: cover;
+}
+
+/* Full Profile Modal */
+.full-profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+}
+
+.full-profile .new-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: gray;
+  width: 90%;
+  max-width: 400px;
+  height: 75%;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.full-profile .new-profile .name-change {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.full-profile .new-profile .name-change label {
+  background-color: rgb(214, 212, 212);
+  height: 100%;
+  width: 30%;
+  text-align: center;
+  padding-top: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.full-profile .new-profile .name-change input {
+  width: 70%;
+  height: 100%;
+  border: none;
+  padding: 0 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  outline: none;
+}
+
+.new-profile .img-change img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 5px solid black;
+  object-fit: cover;
+}
+
+.full-profile .img-change {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.full-profile .img-change input {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.full-profile .img-change .cam-icon {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  color: white;
+  cursor: pointer;
+}
+
+.full-profile .cls-btn {
+  margin-top: 20px;
+  background-color: rgb(25, 114, 224);
+  width: 100px;
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.full-profile .cls-btn:hover {
+  background-color: rgb(20, 90, 180);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .Nav {
+    padding: 0 16px;
+  }
+
+  .Nav .logo-links {
+    gap: 10px;
+  }
+
+  .Nav .brand .name {
+    font-size: 1rem;
+  }
+
+  .Nav .links {
+    gap: 10px;
+  }
+
+  .Nav .links a {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .Nav .notify-profile {
+    gap: 10px;
+  }
+
+  .Nav .notify-profile button {
+    width: 80px;
+    font-size: 12px;
+  }
+
+  .Nav .notify-profile .cart {
+    font-size: 12px;
+  }
+
+  .Nav .notify-profile .notific {
+    width: 36px;
+    height: 36px;
+  }
+
+  .Nav .notify-profile .profile img {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .Nav {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+  }
+
+  .Nav .logo-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .Nav .links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .Nav .notify-profile {
+    margin-top: 10px;
+  }
+}
