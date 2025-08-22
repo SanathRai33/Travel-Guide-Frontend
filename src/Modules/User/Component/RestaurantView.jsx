@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { Container, Typography, Card, CardContent, CardMedia, TextField, Box, Button, Chip, Collapse, IconButton, Rating, MenuItem } from "@mui/material";
+import { Typography, Card, CardMedia, TextField, Box, Button, Chip, Collapse, IconButton, Rating, MenuItem } from "@mui/material";
 import Axios from "axios";
-import AspectRatio from '@mui/joy/AspectRatio';
 import CheckIcon from "@mui/icons-material/Check";
 import PeopleIcon from "@mui/icons-material/People";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";

@@ -22,7 +22,7 @@ const Hotel = () => {
   const [minRating, setMinRating] = useState(0);
   const [sortOrder, setSortOrder] = useState("");
   const [hotelData, setHotelData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [selectedFacilities, setSelectedFacilities] = useState([]);
 
@@ -30,31 +30,49 @@ const Hotel = () => {
   const getFacilityIcon = (facility) => {
     const lowerFacility = facility.toLowerCase();
 
-    if (lowerFacility.includes("pool")) return <PoolIcon sx={{width: '15px'}} />;
-    if (lowerFacility.includes("wifi")) return <WifiIcon sx={{width: '15px'}} />;
-    if (lowerFacility.includes("parking")) return <LocalParkingIcon sx={{width: '15px'}} />;
-    if (lowerFacility.includes("non-smoking")) return <SmokeFreeIcon sx={{width: '15px'}} />;
-    if (lowerFacility.includes("air conditioning")) return <AcUnitIcon sx={{width: '15px'}} />;
-    if (lowerFacility.includes("fitness")) return <FitnessCenterIcon sx={{width: '15px'}} />;
-    if (lowerFacility.includes("24-hour front desk")) return <AccessTime sx={{width: '15px'}} />;
+    if (lowerFacility.includes("pool")) return <PoolIcon sx={{ width: '15px' }} />;
+    if (lowerFacility.includes("wifi")) return <WifiIcon sx={{ width: '15px' }} />;
+    if (lowerFacility.includes("parking")) return <LocalParkingIcon sx={{ width: '15px' }} />;
+    if (lowerFacility.includes("non-smoking")) return <SmokeFreeIcon sx={{ width: '15px' }} />;
+    if (lowerFacility.includes("air conditioning")) return <AcUnitIcon sx={{ width: '15px' }} />;
+    if (lowerFacility.includes("fitness")) return <FitnessCenterIcon sx={{ width: '15px' }} />;
+    if (lowerFacility.includes("24-hour front desk")) return <AccessTime sx={{ width: '15px' }} />;
     return <CheckIcon style={{ color: "green" }} />;
   };
 
 
+  // useEffect(() => {
+  //   setLoading(true);
+  //   setError(false);
+  //   axios.get(`http://localhost:7002/hotel/get`)
+  //     .then((response) => {
+  //       setHotelData(response.data);
+  //       setLoading(false);
+  //     })
+  //     .catch((error) => {
+  //       console.log(`Request cancelled ${error}`);
+  //       setError(true);
+  //       setLoading(false);
+  //     })
+  // }, []);
+
+
   useEffect(() => {
-    setLoading(true);
-    setError(false);
-    axios.get(`http://localhost:7002/hotel/get`)
-      .then((response) => {
+    (async () => {
+      try {
+        setLoading(true);
+        const response = await axios.get(`http://localhost:7002/hotel/get`);
         setHotelData(response.data);
-        setLoading(false);
-        console.log(response.data)
-      })
-      .catch((error) => {
-        console.log(`Request cancelled ${error}`);
+      } catch (error) {
+        if (axios.isCancel(error)) {
+          console.log(`Request cancelled ${error.message}`);
+          return;
+        }
         setError(true);
+      } finally {
         setLoading(false);
-      })
+      }
+    })();
   }, []);
 
   const count = new Array(8).fill(0);
@@ -77,19 +95,31 @@ const Hotel = () => {
       .sort((a, b) => (sortOrder === "lowToHigh" ? a.price - b.price : sortOrder === "highToLow" ? b.price - a.price : 0))
     : [];
 
-  // const getBadgeStyle = (deal) => {
-  //   const styles = {
-  //     "Premium Delight": { background: "#000000", color: "#ffffff" },
-  //     "Ultimate Comfort": { background: "#1E90FF", color: "#FFFFFF" },
-  //     "Elite Stay": { background: "#32CD32", color: "#FFFFFF" },
-  //     "Romantic Getaway": { background: "crimson", color: "#FFFFFF" },
-  //     "Exclusive Deal": { background: "#8B0000", color: "#FFFFFF" }
-  //   };
-  //   return styles[deal] || { background: "#ccc", color: "#000" };
-  // };
+  if (loading) {
+    return (
+      <Box sx={{ display: "flex", flexWrap: "wrap", gap: "20px", padding: "20px" }}>
+        {count.map((_, index) => (
+          <Box key={index} sx={{ display: "flex", width: "500px", borderRadius: "10px", overflow: "hidden", border: "1px solid #ddd", backgroundColor: "#f5f5f5" }}>
+            <Skeleton variant="rectangular" width={200} height="100%" sx={{ borderRadius: "5px" }} />
+            <Box sx={{ flex: 1, padding: "15px" }}>
+              <Skeleton variant="text" width="50px" height={20} sx={{ marginBottom: "5px" }} />
+              <Skeleton variant="text" width="70%" height={45} sx={{ marginBottom: "5px" }} />
+              <Skeleton variant="text" width="80%" />
+              <Skeleton variant="text" width="70%" />
+              <Skeleton variant="text" width="60%" />
+              <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "10px" }}>
+                <Skeleton variant="text" width={80} height={30} />
+                <Skeleton variant="rectangular" width={100} height={35} sx={{ borderRadius: "5px" }} />
+              </Box>
+            </Box>
+          </Box>
+        ))}
+      </Box>
+    )
+  }
 
   return (
-    <div className="hotel-page">
+    <div className="hotel-page" sx={{ backgroundColor: 'red' }}>
       <div className="hotel-sidebar">
         <h6>Search by Hotel Name</h6>
         <TextField label="Search Hotel" variant="outlined" fullWidth size="small" value={search} onChange={(e) => setSearch(e.target.value)} style={{ marginBottom: "10px" }} />
@@ -135,6 +165,8 @@ const Hotel = () => {
             <h1 className="not-found">Result not found</h1>
           </Box>) : (<></>)}
 
+          
+
         {filteredHotels.map((hotel) => (
           <div key={hotel._id} className="hotel-card">
             <img src={`http://localhost:7002/api/uploads/${hotel.outsideImage}`} alt={hotel.name} className="hotel-image" />
@@ -169,26 +201,6 @@ const Hotel = () => {
         ))}
       </div>
 
-      {loading && (
-        <Box sx={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
-          {count.map((_, index) => (
-            <Box key={index} sx={{ display: "flex", width: "500px", borderRadius: "10px", overflow: "hidden", border: "1px solid #ddd", backgroundColor: "#f5f5f5" }}>
-              <Skeleton variant="rectangular" width={200} height="100%" sx={{ borderRadius: "5px" }} />
-              <Box sx={{ flex: 1, padding: "15px" }}>
-                <Skeleton variant="text" width="50px" height={20} sx={{ marginBottom: "5px" }} />
-                <Skeleton variant="text" width="70%" height={45} sx={{ marginBottom: "5px" }} />
-                <Skeleton variant="text" width="80%" />
-                <Skeleton variant="text" width="70%" />
-                <Skeleton variant="text" width="60%" />
-                <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "10px" }}>
-                  <Skeleton variant="text" width={80} height={30} />
-                  <Skeleton variant="rectangular" width={100} height={35} sx={{ borderRadius: "5px" }} />
-                </Box>
-              </Box>
-            </Box>
-          ))}
-        </Box>
-      )}
     </div>
   );
 };

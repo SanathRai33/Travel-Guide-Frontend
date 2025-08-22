@@ -40,7 +40,7 @@ export default function Navbar() {
       <Box sx={{ overflow: "auto", p: 2 }}>
         <List>
           {menuItems.map(({ text, icon, path }, index) => (
-            <Link to={path} sx={{ textDecoration: 'none'}}>
+            <Link to={path} key={index} sx={{ textDecoration: 'none'}}>
             <ListItem button key={text} sx={{ borderRadius: 2, mb: 1, color: 'black', ":hover":{ color: 'grey'} }}>
               <Box sx={{ display: "flex", alignItems: "center", gap: 2, }}>
                 {icon}

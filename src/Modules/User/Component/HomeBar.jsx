@@ -1,7 +1,7 @@
 import React from 'react';
 import '../css/Home.css';
 import { NavLink } from 'react-router-dom';
-import { FaUtensils, FaBed, FaHome, FaTicketAlt, FaPlane, FaHamsa } from 'react-icons/fa';
+import { FaUtensils, FaBed, FaHome, FaHamsa } from 'react-icons/fa';
 
 export default function HomeBar() {
   return (

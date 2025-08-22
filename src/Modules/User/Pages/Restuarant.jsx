@@ -16,7 +16,7 @@ import errorAnimation from "../Images/error.json";
 
 const Restaurant = () => {
   const [resData, setResData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [search, setSearch] = useState("");
   const [minRating, setMinRating] = useState(0);
@@ -27,10 +27,8 @@ const Restaurant = () => {
     (async () => {
       try {
         setLoading(true);
-        setError(false);
         const response = await axios.get(`http://localhost:7002/restaurant/get`);
         setResData(response.data);
-        setLoading(false);
         console.log(response.data);
       } catch (error) {
         if (axios.isCancel(error)) {
@@ -38,10 +36,15 @@ const Restaurant = () => {
           return;
         }
         setError(true);
+      } finally {
         setLoading(false);
       }
     })();
   }, []);
+
+  if (loading) {
+    return <div>Loading</div>
+  }
 
   const handleFacilityChange = (facility) => {
     setSelectedFacilities((prev) =>
@@ -71,7 +74,6 @@ const Restaurant = () => {
 
   return (
     <Container className="restaurant-container">
-
 
       <Box className="restaurant-sidebar">
         <h6> Search by Restaurant Name </h6>
@@ -115,18 +117,18 @@ const Restaurant = () => {
       </Box>
 
       <Box className="restaurant-list">
-      {error ?
-          (<Box display= "flex" flexDirection= "column" alignItems= "center" justifyContent= "center" height= "100vh" backgroundColor= "#f8f8f8" mixBlendMode= "darken" width= "1050px">
-            <Lottie animationData={errorAnimation} loop={true} style={{ height:'300px', width:'300px'}} />
+        {error ?
+          (<Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" height="100vh" backgroundColor="#f8f8f8" mixBlendMode="darken" width="1050px">
+            <Lottie animationData={errorAnimation} loop={true} style={{ height: '300px', width: '300px' }} />
             <h2 className="not-found">Oops! Something went wrong</h2>
-          </Box>):
-           filteredRestaurants.length ===0 ? (<Box display='flex' flexDirection='column' justifyContent='center' alignItems='center' height='80vh' minWidth="1000px">
-            <video width="400"  autoPlay loop style={{ mixBlendMode: "darken", }}>
+          </Box>) :
+          filteredRestaurants.length === 0 ? (<Box display='flex' flexDirection='column' justifyContent='center' alignItems='center' height='80vh' minWidth="1000px">
+            <video width="400" autoPlay loop style={{ mixBlendMode: "darken", }}>
               <source src="https://cdnl.iconscout.com/lottie/premium/thumb/result-not-found-animation-download-in-lottie-json-gif-static-svg-file-formats--webpage-error-discovered-404-website-bug-pack-design-development-animations-6647509.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
             <h1 className="not-found">Result not found</h1>
-          </Box>): (<></>)}
+          </Box>) : (<></>)}
 
         <Grid container spacing={3}>
           {filteredRestaurants.map((restaurant, index) => (

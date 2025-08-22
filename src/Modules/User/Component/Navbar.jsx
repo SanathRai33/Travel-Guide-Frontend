@@ -3,27 +3,24 @@ import { NavLink, useNavigate } from "react-router-dom";
 import '../css/Navbar.css';
 import Profile from "../Images/view1.jpg";
 import LOGO from '../Images/Logo.png'
-import { FaBell } from "react-icons/fa";
-import { gsap } from "gsap";
-import { useGSAP } from '@gsap/react';
 import { FaClipboardList } from "react-icons/fa";
 
 const Navbar = () => {
 
-  const [ profileState, setProfileState] = useState(null);
+  const [profileState, setProfileState] = useState(null);
   // const [ profImg, setProfImg] = useState(LOGO)
-  const [name, setName] = useState("Sanath"); 
+  const [name, setName] = useState("Sanath");
 
   const handleNameChange = (e) => {
     setName(e.target.value);
   };
-  
+
   const navigate = useNavigate();
 
   const handleLogIn = () => navigate("/login")
   const closeProfile = () => setProfileState(null);
-  const viewProfile = (Navbar) =>setProfileState(Navbar);
-  
+  const viewProfile = (Navbar) => setProfileState(Navbar);
+
   const handlePic = (e) => {
     // const file = e.target.files[0];
     // if (file) {
@@ -98,6 +95,12 @@ const Navbar = () => {
 
   // ---------------------------------------------------------------------------
 
+  const user = {
+    name: "Sanath Rai",
+    email: "sanathrai03@gmail.com",
+  }
+
+  // const user = null;
 
   return (
     <div className="Nav">
@@ -112,19 +115,26 @@ const Navbar = () => {
           <NavLink to="/about">About</NavLink>
         </div>
       </div>
-        <div className="notify-profile">
-          <button className="btn" onClick={handleLogIn}>LogOut</button>
-          <NavLink to="/BookStatus" className="cart" >Booking<FaClipboardList className="cart-icon"/> </NavLink>
-          {/* <NavLink to="/Notification" className="notific">
+      <div className="notify-profile">
+        {user ?
+          <>
+            <NavLink to="/BookStatus" className="cart" >Booking<FaClipboardList className="cart-icon" /> </NavLink>
+            <button className="btn" onClick={handleLogIn}>LogOut</button>
+          </> :
+          <>
+            <button className="btn" onClick={handleLogIn}>LogIn</button>
+            <></>
+          </>}
+        {/* <NavLink to="/Notification" className="notific">
             <FaBell className="bell-icon" />
           </NavLink> */}
-          <div className="profile" onClick={viewProfile}>
-            <img src={LOGO} alt="something" />
-          </div>
+        <div className="profile" onClick={viewProfile}>
+          <img src={LOGO} alt="something" />
         </div>
-      { profileState && (
-          <Profile image={LOGO} changePic={handlePic} name={name} changeName={handleNameChange} close={closeProfile}/>
-        )
+      </div>
+      {profileState && (
+        <Profile image={LOGO} changePic={handlePic} name={name} changeName={handleNameChange} close={closeProfile} />
+      )
       }
     </div>
   );

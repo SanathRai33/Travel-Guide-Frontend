@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../css/SearchAll.css";
-import { FaMapPin, FaCalendar } from "react-icons/fa";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -29,7 +28,7 @@ import view9 from '../Images/view9.avif';
 import view10 from '../Images/view10.webp';
 import view11 from '../Images/view11.avif';
 import view12 from '../Images/view12.jpg';
-import offer from "../Images/offer2.jpeg";
+// import offer from "../Images/offer2.jpeg";
 
 export default function SearchAll() {
   var settings = {

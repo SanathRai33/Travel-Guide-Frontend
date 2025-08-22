@@ -67,12 +67,9 @@ export default function PaymentPage() {
     }
   }, [myid, category]);
 
-
-  useEffect(() => {
-    console.log("Updated formData:", formData);
-    console.log(uniqueId)
-  }, [formData]);
-
+  if(error){
+    return <div>Something went wrong. Try again...</div>
+  }
 
   const generatedTransactionId = (length = 12) => {
     const prefix = "TXN-";

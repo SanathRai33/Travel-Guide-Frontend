@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { Container, Typography, Card, CardContent, CardMedia, TextField, Box, Button, Chip, Collapse, IconButton, Rating, MenuItem } from "@mui/material";
+import { Typography, Card, CardMedia, Box, Button, Chip, Rating } from "@mui/material";
 import Axios from "axios";
-import AspectRatio from '@mui/joy/AspectRatio';
 import CheckIcon from "@mui/icons-material/Check";
 import PeopleIcon from "@mui/icons-material/People";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { styled } from "@mui/material/styles";
+// import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+// import { styled } from "@mui/material/styles";
 import { Oval } from 'react-loader-spinner';
 import '../../User/css/RestaurantView.css'
 import WifiIcon from "@mui/icons-material/Wifi";
@@ -26,22 +25,22 @@ const getFacilityIcon = (facility) => {
   return <CheckIcon style={{ color: "green" }} />;
 };
 
-const ExpandMore = styled((props) => {
-  const { expand, ...other } = props;
-  return <IconButton {...other} />;
-})(({ theme, expand }) => ({
-  transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
-  transition: theme.transitions.create("transform", {
-    duration: theme.transitions.duration.shortest,
-  }),
-}));
+// const ExpandMore = styled((props) => {
+//   const { expand, ...other } = props;
+//   return <IconButton {...other} />;
+// })(({ theme, expand }) => ({
+//   transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
+//   transition: theme.transitions.create("transform", {
+//     duration: theme.transitions.duration.shortest,
+//   }),
+// }));
 
 const RestaurantView = () => {
   const { id: myid } = useParams();
   const navigate = useNavigate();
   const [loader, setLoader] = useState(false);
   const [restaurant, setRestaurant] = useState(null);
-  const [expanded, setExpanded] = useState(false);
+  // const [expanded, setExpanded] = useState(false);
   const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
   const [time, setTime] = useState("Luanch");
   const [guests, setGuests] = useState(1);
@@ -65,9 +64,9 @@ const RestaurantView = () => {
     setTotalPrice( restaurant?.price * guests);
   }, [guests, restaurant]);
 
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
+  // const handleExpandClick = () => {
+  //   setExpanded(!expanded);
+  // };
 
   const category = 3;
 
