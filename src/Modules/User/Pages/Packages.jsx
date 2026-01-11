@@ -6,7 +6,7 @@ import '../css/Packages.css';
 import { FaSearch } from 'react-icons/fa';
 import Lottie from "lottie-react";
 import errorAnimation from "../Images/error.json";
-import Travel from '../Images/Travel.mp4'
+import Travel from '../Images/Travel.avif'
 
 const Packages = () => {
   const [packageData, setPackageData] = useState([]);

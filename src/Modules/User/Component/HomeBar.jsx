@@ -13,32 +13,32 @@ export default function HomeBar() {
   return (
     <div className="HomeBar shadow-sm">
       <nav>
-        <button className="px-6 py-2 rounded-md font-medium text-sm whitespace-nowrap transition-colors bg-blue-600 text-white">
+        <button className="rounded-md overflow-hidden font-medium text-sm whitespace-nowrap transition-colors bg-gray-100 text-gray-700 hover:bg-gray-200">
           <NavLink to="/" className="Nav">
-            <p>All</p>
+           All
           </NavLink>
         </button>
 
-        <button className="px-6 py-2 rounded-md font-medium text-sm whitespace-nowrap transition-colors bg-blue-600 text-white">
+        <button className="rounded-md overflow-hidden font-medium text-sm whitespace-nowrap transition-colors bg-gray-100 text-gray-700 hover:bg-gray-200">
           <NavLink to="/packages" className="Nav">
-            <p>Packages</p>
+           Packages
           </NavLink>
         </button>
 
-        <button className="px-6 py-2 rounded-md font-medium text-sm whitespace-nowrap transition-colors bg-blue-600 text-white">
+        <button className="rounded-md overflow-hidden font-medium text-sm whitespace-nowrap transition-colors bg-gray-100 text-gray-700 hover:bg-gray-200">
           <NavLink to="/hotels" className="Nav">
-            <p>Hotels</p>
+           Hotels
           </NavLink>
         </button>
 
-        <button className="px-6 py-2 rounded-md font-medium text-sm whitespace-nowrap transition-colors bg-blue-600 text-white">
+        <button className="rounded-md overflow-hidden font-medium text-sm whitespace-nowrap transition-colors bg-gray-100 text-gray-700 hover:bg-gray-200">
           <NavLink to="/restuarant" className="Nav">
-            <p>Restaurants</p>
+           Restaurants
           </NavLink>
         </button>
 
-        {/* <NavLink to="/ticket" className="Nav"><FaTicketAlt/><p>Ticket Books</p></NavLink> */}
-        {/* <NavLink to="/things" className="Nav"><FaTicketAlt/><p>Things to do</p></NavLink>  */}
+        {/* <NavLink to="/ticket" className="Nav"><FaTicketAlt/><p>Ticket Books</NavLink> */}
+        {/* <NavLink to="/things" className="Nav"><FaTicketAlt/><p>Things to do</NavLink>  */}
       </nav>
     </div>
   );
