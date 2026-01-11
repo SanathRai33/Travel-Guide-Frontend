@@ -6,7 +6,8 @@ import '../css/Packages.css';
 import { FaSearch } from 'react-icons/fa';
 import Lottie from "lottie-react";
 import errorAnimation from "../Images/error.json";
-import Travel from '../Images/Travel.avif'
+// import Travel from '../Images/Travel.avi'
+import Travel from '../Images/Travel.jpg'
 
 const Packages = () => {
   const [packageData, setPackageData] = useState([]);
@@ -53,10 +54,11 @@ const Packages = () => {
   return (
     <div className="Packages">
       <div className="top-section">
-        <video loop autoPlay className="vid-section">
+        {/* <video loop autoPlay className="vid-section">
           <source src={Travel} type="video/mp4" />
           Your browser does not support the video tag.
-        </video>
+        </video> */}
+        <img src={Travel} alt="Video" className="vid-section" />
         <div className="function-section">
           <div className="search">
             <FaSearch className="search-icon" />
