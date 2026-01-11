@@ -25,7 +25,7 @@ import view10 from '../Images/view10.webp';
 import view11 from '../Images/view11.avif';
 import view12 from '../Images/view12.jpg';
 // import offer from "../Images/offer2.jpeg";
-import Carousel from "./Carousel";
+import Carousel from "../Component/Carousel";
 import SearchBox from "../Component/SearchBox";
 
 export default function SearchAll() {

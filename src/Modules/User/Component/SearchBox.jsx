@@ -32,19 +32,19 @@ const SearchBox = () => {
       </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 scrollbar-hidden">
-        <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl p-6 text-white cursor-pointer hover:shadow-lg transition-shadow">
+        <div className="bg-gradient-to-br from-green-500 to-green-700 rounded-xl p-6 text-white cursor-pointer hover:shadow-lg transition-shadow">
             <h4>Tour Packages</h4>
             <p>150+ destinations</p>
         </div>
-        <div className="bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl p-6 text-white cursor-pointer hover:shadow-lg transition-shadow">
+        <div className="bg-gradient-to-br from-yellow-500 to-yellow-700 rounded-xl p-6 text-white cursor-pointer hover:shadow-lg transition-shadow">
             <h4>Hotels</h4>
             <p>500+ properties</p>
         </div>
-        <div className="bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl p-6 text-white cursor-pointer hover:shadow-lg transition-shadow">
+        <div className="bg-gradient-to-br from-red-500 to-red-700 rounded-xl p-6 text-white cursor-pointer hover:shadow-lg transition-shadow">
             <h4>Restaurants</h4>
             <p>200+ venues</p>
         </div>
-        <div className="bg-gradient-to-br from-green-500 to-green-600 rounded-xl p-6 text-white cursor-pointer hover:shadow-lg transition-shadow">
+        <div className="bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl p-6 text-white cursor-pointer hover:shadow-lg transition-shadow">
             <h4>Travel Tickets</h4>
             <p>All modes</p>
         </div>
