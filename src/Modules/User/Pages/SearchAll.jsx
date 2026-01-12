@@ -73,7 +73,7 @@ export default function SearchAll() {
   ];
 
   return (
-    <div className="SearchAll lg:px-20 lg:py-10 flex justify-center items-center flex-col gap-5">
+    <div className="SearchAll lg:px-20 lg:py-10 flex justify-center items-center flex-col gap-5 bg-[#F8FAFC]">
       <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }} transition={{ duration: 0.7 }} className="carosoule rounded-xl overflow-hidden lg:max-h-120 bg-black lg:w-full shadow-lg">
         <Carousel />
@@ -88,25 +88,25 @@ export default function SearchAll() {
         viewport={{ once: true }} transition={{ duration: 0.7 }} className="whyChose">
         <h1 className="head">Why book with Regal Roamers?</h1>
         <div className="reasons grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="Exp shadow p-2 rounded-md">
+          <div className="Exp shadow p-2 rounded-md bg-[#0EA5E9] text-white">
             <p><img width='50px' src="https://cdn-icons-png.flaticon.com/128/9636/9636012.png" alt="tourist icons" /></p>
             <h5>Experienced Local Guides</h5>
             <p>Our passionate and knowledgeable guides bring destinations to life with
               insider insights, hidden gems, and cultural expertise.</p>
           </div>
-          <div className="itineraries shadow p-2 rounded-md">
+          <div className="itineraries shadow p-2 rounded-md bg-[#0EA5E9] text-white">
             <p><img width='50px' src="https://cdn-icons-png.flaticon.com/128/10217/10217348.png" alt="tourist icons" /></p>
             <h5>Customizable itineraries</h5>
             <p>Whether you prefer adventure, history, or relaxation, we tailor each
               tour to match your interests and schedule for a truly personalized experience.</p>
           </div>
-          <div className="support shadow p-2 rounded-md">
+          <div className="support shadow p-2 rounded-md bg-[#0EA5E9] text-white">
             <p><img width='50px' src="https://cdn-icons-png.flaticon.com/128/4230/4230869.png" alt="tourist icons" /></p>
             <h5>24/7 customer support</h5>
             <p>Travel with confidence knowing that our dedicated support team is available
               around the clock to assist you whenever you need help.</p>
           </div>
-          <div className="price shadow p-2 rounded-md">
+          <div className="price shadow p-2 rounded-md bg-[#0EA5E9] text-white">
             <p><img width='50px' src="https://cdn-icons-png.flaticon.com/128/17216/17216427.png" alt="tourist icons" /></p>
             <h5>Affordable pricing</h5>
             <p>We offer competitive rates without compromising on quality, ensuring you get

@@ -8,6 +8,8 @@ import Lottie from "lottie-react";
 import errorAnimation from "../Images/error.json";
 // import Travel from '../Images/Travel.avi'
 import Travel from '../Images/Travel.jpg'
+import PackageFilter from "../Component/PackageFilter";
+import PackageCard from "../Component/PackageCard";
 
 const Packages = () => {
   const [packageData, setPackageData] = useState([]);
@@ -52,39 +54,29 @@ const Packages = () => {
   });
 
   return (
-    <div className="Packages">
-      <div className="top-section">
-        {/* <video loop autoPlay className="vid-section">
-          <source src={Travel} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video> */}
-        <img src={Travel} alt="Video" className="vid-section" />
-        <div className="function-section">
-          <div className="search">
-            <FaSearch className="search-icon" />
-            <input type="search" placeholder="Search" value={searchPackage} onChange={handleSearchChange} />
-          </div>
-          <FormControl className="dropdown" size="small">
-            <InputLabel className="sort">Sort By:</InputLabel>
-            <Select value={sortBy} onChange={handleSortChange} className="selection" label="Sort By">
-              <MenuItem value="">All</MenuItem>
-              <MenuItem value="lowPrice">Price (Low to High)</MenuItem>
-              <MenuItem value="highPrice">Price (High to Low)</MenuItem>
-              <MenuItem value="lowRating">Rating (Low to High)</MenuItem>
-              <MenuItem value="highRating">Rating (High to Low)</MenuItem>
-              {/* <MenuItem value="Luxury & Budget">Category (Luxury & Budget)</MenuItem>
-              <MenuItem value="Beach & Relaxation">Category (Beach & Relaxation)</MenuItem>
-              <MenuItem value="Adventure">Category (Adventure)</MenuItem>
-              <MenuItem value="Heritage & Culture">Category (Heritage & Culture)</MenuItem> */}
-            </Select>
-          </FormControl>
-          <div className="count">Available Packages: {sortedPackages.length}</div>
-        </div>
+    <div className="Packages lg:px-40 lg:py-10 flex justify-center items-center flex-col gap-2 bg-[#F8FAFC] ">
+      <div className="flex flex-col justify-start items-start w-full">
+        <h2 className="text-3xl font-bold text-gray-900 mb-2">
+          Tour Packages
+        </h2>
+        <p className="text-gray-600">
+          Explore our curated selection of amazing tour packages
+        </p>
       </div>
+      <div className="w-full bg-white shadow-md rounded-lg mb-4">
+      <PackageFilter/>
+      </div>
+      <div className="w-full grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
+        <PackageCard />
+        <PackageCard />
+        <PackageCard />
+        <PackageCard />
+      </div>
+        
 
       <Grid container spacing={4} justifyContent="center" p={2} mt={2}>
 
-        {error ?
+        {/* {error ?
           (<Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" height="100vh" backgroundColor="#f8f8f8" mixBlendMode="darken" width="1050px">
             <Lottie animationData={errorAnimation} loop={true} style={{ height: '300px', width: '300px' }} />
             <h2 className="not-found">Oops! Something went wrong</h2>
@@ -95,7 +87,7 @@ const Packages = () => {
               Your browser does not support the video tag.
             </video>
             <h1 className="not-found">Result not found</h1>
-          </Box>) : (<></>)}
+          </Box>) : (<></>)} */}
 
         {sortedPackages.map((pkg, index) => (
           <Grid item xs={12} sm={6} md={3} key={index}>
