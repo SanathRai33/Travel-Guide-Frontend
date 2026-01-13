@@ -13,7 +13,7 @@ import HotelView from '../Component/HotelView';
 
 export default function Home() {
   return (
-    <div className='Home'>
+    <div className='Home bg-[#F8FAFC]'>
       <HomeBar /> 
       <Routes>
         <Route path="/" element={<SearchAll />} />

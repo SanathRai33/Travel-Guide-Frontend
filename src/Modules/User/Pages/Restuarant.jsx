@@ -13,6 +13,9 @@ import { ChefHat, MicIcon } from "lucide-react";
 import "../css/Restaurant.css";
 import Lottie from "lottie-react";
 import errorAnimation from "../Images/error.json";
+import Header from "../Component/Header";
+import RestaurantFilter from "../Component/RestaurantFilter";
+import RestaurantCard from "../Component/RestaurantCard";
 
 const Restaurant = () => {
   const [resData, setResData] = useState([]);
@@ -73,9 +76,21 @@ const Restaurant = () => {
     : [];
 
   return (
-    <Container className="restaurant-container">
+    <Container className="lg:px-40 lg:py-10 flex justify-center items-center flex-col gap-2 bg-[#F8FAFC]">
+      <Header title="Restaurants" description="Discover exceptional dining experiences" />
+      <div className="w-full bg-white shadow-md rounded-lg mb-4">
+        <RestaurantFilter/>
+      </div>
+      <div className="w-full grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+        <RestaurantCard />
+      </div>
 
-      <Box className="restaurant-sidebar">
+
+
+      {/* <Box className="restaurant-sidebar">
         <h6> Search by Restaurant Name </h6>
         <TextField label="Search Restaurant" variant="outlined" fullWidth size="small" value={search} onChange={(e) => setSearch(e.target.value)} />
 
@@ -186,7 +201,7 @@ const Restaurant = () => {
             </Grid>
           ))}
         </Grid>
-      </Box>
+      </Box> */}
     </Container>
   );
 };
