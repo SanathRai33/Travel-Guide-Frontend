@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Button, TextField, Select, MenuItem, FormControlLabel, Checkbox, Chip } from "@mui/material";
+import {
+  Button,
+  TextField,
+  Select,
+  MenuItem,
+  FormControlLabel,
+  Checkbox,
+  Chip,
+} from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
 import "../css/Hotel.css";
 import axios from "axios";
@@ -16,6 +24,10 @@ import LocalParkingIcon from "@mui/icons-material/LocalParking";
 import SmokeFreeIcon from "@mui/icons-material/SmokeFree";
 import AcUnitIcon from "@mui/icons-material/AcUnit";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
+import HotelFilter from "../Component/HotelFilter";
+import Header from "../Component/Header";
+import PackageCard from "../Component/PackageCard";
+import HotelCard from "../Component/HotelCard";
 
 const Hotel = () => {
   const [search, setSearch] = useState("");
@@ -26,20 +38,25 @@ const Hotel = () => {
   const [error, setError] = useState(null);
   const [selectedFacilities, setSelectedFacilities] = useState([]);
 
-
   const getFacilityIcon = (facility) => {
     const lowerFacility = facility.toLowerCase();
 
-    if (lowerFacility.includes("pool")) return <PoolIcon sx={{ width: '15px' }} />;
-    if (lowerFacility.includes("wifi")) return <WifiIcon sx={{ width: '15px' }} />;
-    if (lowerFacility.includes("parking")) return <LocalParkingIcon sx={{ width: '15px' }} />;
-    if (lowerFacility.includes("non-smoking")) return <SmokeFreeIcon sx={{ width: '15px' }} />;
-    if (lowerFacility.includes("air conditioning")) return <AcUnitIcon sx={{ width: '15px' }} />;
-    if (lowerFacility.includes("fitness")) return <FitnessCenterIcon sx={{ width: '15px' }} />;
-    if (lowerFacility.includes("24-hour front desk")) return <AccessTime sx={{ width: '15px' }} />;
+    if (lowerFacility.includes("pool"))
+      return <PoolIcon sx={{ width: "15px" }} />;
+    if (lowerFacility.includes("wifi"))
+      return <WifiIcon sx={{ width: "15px" }} />;
+    if (lowerFacility.includes("parking"))
+      return <LocalParkingIcon sx={{ width: "15px" }} />;
+    if (lowerFacility.includes("non-smoking"))
+      return <SmokeFreeIcon sx={{ width: "15px" }} />;
+    if (lowerFacility.includes("air conditioning"))
+      return <AcUnitIcon sx={{ width: "15px" }} />;
+    if (lowerFacility.includes("fitness"))
+      return <FitnessCenterIcon sx={{ width: "15px" }} />;
+    if (lowerFacility.includes("24-hour front desk"))
+      return <AccessTime sx={{ width: "15px" }} />;
     return <CheckIcon style={{ color: "green" }} />;
   };
-
 
   // useEffect(() => {
   //   setLoading(true);
@@ -55,7 +72,6 @@ const Hotel = () => {
   //       setLoading(false);
   //     })
   // }, []);
-
 
   useEffect(() => {
     (async () => {
@@ -79,48 +95,106 @@ const Hotel = () => {
 
   const handleFacilityChange = (facility) => {
     setSelectedFacilities((prev) =>
-      prev.includes(facility) ? prev.filter((f) => f !== facility) : [...prev, facility]
+      prev.includes(facility)
+        ? prev.filter((f) => f !== facility)
+        : [...prev, facility]
     );
   };
 
-
   const filteredHotels = Array.isArray(hotelData)
     ? hotelData
-      .filter(
-        (hotel) =>
-          hotel.name.toLowerCase().includes(search.toLowerCase()) &&
-          hotel.rating >= minRating &&
-          (selectedFacilities.length === 0 || selectedFacilities.every((fac) => hotel.facilities.includes(fac)))
-      )
-      .sort((a, b) => (sortOrder === "lowToHigh" ? a.price - b.price : sortOrder === "highToLow" ? b.price - a.price : 0))
+        .filter(
+          (hotel) =>
+            hotel.name.toLowerCase().includes(search.toLowerCase()) &&
+            hotel.rating >= minRating &&
+            (selectedFacilities.length === 0 ||
+              selectedFacilities.every((fac) => hotel.facilities.includes(fac)))
+        )
+        .sort((a, b) =>
+          sortOrder === "lowToHigh"
+            ? a.price - b.price
+            : sortOrder === "highToLow"
+            ? b.price - a.price
+            : 0
+        )
     : [];
 
   if (loading) {
     return (
-      <Box sx={{ display: "flex", flexWrap: "wrap", gap: "20px", padding: "20px" }}>
+      <Box
+        sx={{ display: "flex", flexWrap: "wrap", gap: "20px", padding: "20px" }}
+      >
         {count.map((_, index) => (
-          <Box key={index} sx={{ display: "flex", width: "500px", borderRadius: "10px", overflow: "hidden", border: "1px solid #ddd", backgroundColor: "#f5f5f5" }}>
-            <Skeleton variant="rectangular" width={200} height="100%" sx={{ borderRadius: "5px" }} />
+          <Box
+            key={index}
+            sx={{
+              display: "flex",
+              width: "500px",
+              borderRadius: "10px",
+              overflow: "hidden",
+              border: "1px solid #ddd",
+              backgroundColor: "#f5f5f5",
+            }}
+          >
+            <Skeleton
+              variant="rectangular"
+              width={200}
+              height="100%"
+              sx={{ borderRadius: "5px" }}
+            />
             <Box sx={{ flex: 1, padding: "15px" }}>
-              <Skeleton variant="text" width="50px" height={20} sx={{ marginBottom: "5px" }} />
-              <Skeleton variant="text" width="70%" height={45} sx={{ marginBottom: "5px" }} />
+              <Skeleton
+                variant="text"
+                width="50px"
+                height={20}
+                sx={{ marginBottom: "5px" }}
+              />
+              <Skeleton
+                variant="text"
+                width="70%"
+                height={45}
+                sx={{ marginBottom: "5px" }}
+              />
               <Skeleton variant="text" width="80%" />
               <Skeleton variant="text" width="70%" />
               <Skeleton variant="text" width="60%" />
-              <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "10px" }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  marginTop: "10px",
+                }}
+              >
                 <Skeleton variant="text" width={80} height={30} />
-                <Skeleton variant="rectangular" width={100} height={35} sx={{ borderRadius: "5px" }} />
+                <Skeleton
+                  variant="rectangular"
+                  width={100}
+                  height={35}
+                  sx={{ borderRadius: "5px" }}
+                />
               </Box>
             </Box>
           </Box>
         ))}
       </Box>
-    )
+    );
   }
 
   return (
-    <div className="hotel-page" sx={{ backgroundColor: 'red' }}>
-      <div className="hotel-sidebar">
+    <div className="lg:px-40 lg:py-10 flex justify-center items-center flex-col gap-2 bg-[#F8FAFC]">
+      <Header title="Hotels" description="Find the perfect accommodation for your stay" />
+      <div className="w-full bg-white shadow-md rounded-lg mb-4">
+        <HotelFilter/>
+      </div>
+      <div className="w-full grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
+        <HotelCard />
+        <HotelCard />
+        <HotelCard />
+        <HotelCard />
+      </div>
+
+      {/* <div className="hotel-sidebar">
         <h6>Search by Hotel Name</h6>
         <TextField label="Search Hotel" variant="outlined" fullWidth size="small" value={search} onChange={(e) => setSearch(e.target.value)} style={{ marginBottom: "10px" }} />
         <h6>Filter by Rating</h6>
@@ -170,12 +244,12 @@ const Hotel = () => {
         {filteredHotels.map((hotel) => (
           <div key={hotel._id} className="hotel-card">
             <img src={`http://localhost:7002/api/uploads/${hotel.outsideImage}`} alt={hotel.name} className="hotel-image" />
-            <div className="hotel-info">
-              {/* <span className="deal-badge" style={getBadgeStyle(hotel.deal)}>
+            <div className="hotel-info"> */}
+      {/* <span className="deal-badge" style={getBadgeStyle(hotel.deal)}>
                 {hotel.deal}
               </span> */}
 
-              <h2 style={{ minHeight: "77px" }}>{hotel.name}</h2>
+      {/* <h2 style={{ minHeight: "77px" }}>{hotel.name}</h2>
               <p className="hotel-rating">
                 <StarIcon style={{ color: "gold" }} /> {hotel.rating} <People sx={{ marginLeft: "10px" }} />({hotel.reviews})
               </p>
@@ -199,8 +273,7 @@ const Hotel = () => {
             </div>
           </div>
         ))}
-      </div>
-
+      </div> */}
     </div>
   );
 };

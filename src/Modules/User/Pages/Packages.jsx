@@ -10,6 +10,7 @@ import errorAnimation from "../Images/error.json";
 import Travel from '../Images/Travel.jpg'
 import PackageFilter from "../Component/PackageFilter";
 import PackageCard from "../Component/PackageCard";
+import Header from "../Component/Header";
 
 const Packages = () => {
   const [packageData, setPackageData] = useState([]);
@@ -54,15 +55,8 @@ const Packages = () => {
   });
 
   return (
-    <div className="Packages lg:px-40 lg:py-10 flex justify-center items-center flex-col gap-2 bg-[#F8FAFC] ">
-      <div className="flex flex-col justify-start items-start w-full">
-        <h2 className="text-3xl font-bold text-gray-900 mb-2">
-          Tour Packages
-        </h2>
-        <p className="text-gray-600">
-          Explore our curated selection of amazing tour packages
-        </p>
-      </div>
+    <div className="lg:px-40 lg:py-10 flex justify-center items-center flex-col gap-2 bg-[#F8FAFC] ">
+      <Header title="Tour Packages" description="Explore our curated selection of amazing tour packages" />
       <div className="w-full bg-white shadow-md rounded-lg mb-4">
       <PackageFilter/>
       </div>
