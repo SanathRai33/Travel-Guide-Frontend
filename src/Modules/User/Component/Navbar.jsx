@@ -1,33 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import '../css/Navbar.css';
-import Profile from "../Images/view1.jpg";
-import LOGO from '../Images/Logo.png'
-import { FaClipboardList } from "react-icons/fa";
+import "../css/Navbar.css";
+import LOGO from "../Images/Logo.png";
+import { IoIosLogOut } from "react-icons/io";
+import { FaRegUser } from "react-icons/fa";
+import { CiLogin } from "react-icons/ci";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
 
-  const [profileState, setProfileState] = useState(null);
-  // const [ profImg, setProfImg] = useState(LOGO)
-  const [name, setName] = useState("Sanath");
-
-  const handleNameChange = (e) => {
-    setName(e.target.value);
-  };
-
   const navigate = useNavigate();
 
-  const handleLogIn = () => navigate("/login")
-  const closeProfile = () => setProfileState(null);
-  const viewProfile = (Navbar) => setProfileState(Navbar);
-
-  const handlePic = (e) => {
-    // const file = e.target.files[0];
-    // if (file) {
-    //   const imageUrl = URL.createObjectURL(file);
-    //   setProfImg(imageUrl);
-    // }
-    console.log(e.target.value)
+  const handleLogIn = () => navigate("/login");
+  const viewProfile = (Navbar) => {
+    toast.success('Feature comming soon...')
   };
 
   // ---------------------------------------------------------------------------
@@ -98,44 +84,69 @@ const Navbar = () => {
   const user = {
     name: "Sanath Rai",
     email: "sanathrai03@gmail.com",
-  }
+  };
 
   // const user = null;
 
   return (
-    <div className="Nav">
-      <div className="logo-links">
-        <div className="brand">
-          <img src={LOGO} alt="logo" />
-          <h3 className="name">Regal Roamers</h3>
-        </div>
-        <div className="links">
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/contact">Contact</NavLink>
-          <NavLink to="/about">About</NavLink>
+    <div className="Nav flex justify-between items-center w-full h-[64px] py-0 lg:px-[80px] sticky left-0 top-0 z-50 shadow-md bg-white">
+      <div className="flex items-center gap-7">
+        <div className="flex items-center gap-3">
+          <img src={LOGO} alt="logo" className="w-11 h-11 rounded-full" />
+          <h3 className="poppins text-gray-700">Trip Harbor</h3>
         </div>
       </div>
-      <div className="notify-profile">
-        {user ?
-          <>
-            <NavLink to="/BookStatus" className="cart" >Booking<FaClipboardList className="cart-icon" /> </NavLink>
-            <button className="btn" onClick={handleLogIn}>LogOut</button>
-          </> :
-          <>
-            <button className="btn" onClick={handleLogIn}>LogIn</button>
-            <></>
-          </>}
-        {/* <NavLink to="/Notification" className="notific">
-            <FaBell className="bell-icon" />
-          </NavLink> */}
-        <div className="profile" onClick={viewProfile}>
-          <img src={LOGO} alt="something" />
-        </div>
+      <div className="flex items-center gap-5">
+        <NavLink
+          className="text-gray-700 px-3 py-2 rounded-md text-sm hover:text-slate-500 hover:bg-gray-100 active:bg-blue-600 transition-colors duration-300 ease-in-out"
+          to="/"
+        >
+          Home
+        </NavLink>
+        <NavLink
+          className="text-gray-700 px-3 py-2 rounded-md text-sm hover:text-slate-500 hover:bg-gray-100 active:bg-blue-600 transition-colors duration-300 ease-in-out"
+          to="/contact"
+        >
+          Contact
+        </NavLink>
+        <NavLink
+          className="text-gray-700 px-3 py-2 rounded-md text-sm hover:text-slate-500 hover:bg-gray-100 active:bg-blue-600 transition-colors duration-300 ease-in-out"
+          to="/about"
+        >
+          About
+        </NavLink>
+        <NavLink
+          className="text-gray-700 px-3 py-2 rounded-md text-sm hover:text-slate-500 hover:bg-gray-100 active:bg-blue-600 transition-colors duration-300 ease-in-out"
+          to="/BookStatus"
+        >
+          Booking{" "}
+        </NavLink>
       </div>
-      {profileState && (
-        <Profile image={LOGO} changePic={handlePic} name={name} changeName={handleNameChange} close={closeProfile} />
-      )
-      }
+      <div className="notify-profile flex items-center lg:gap-5">
+        <div
+          className="flex justify-center items-center cursor-pointer rounded-full h-11 w-11 bg-slate-100 hover:bg-slate-200 transition-all duration-100"
+          onClick={viewProfile}
+        >
+          <FaRegUser />
+        </div>
+        {user ? (
+          <button
+            className="flex items-center justify-center text-red-600 gap-2 w-[100px] h-10 rounded-md bg-red-50 cursor-pointer hover:bg-red-100 transition-all duration-100"
+            onClick={handleLogIn}
+          >
+            <IoIosLogOut />
+            <span>Logout</span>
+          </button>
+        ) : (
+          <button
+            className="flex items-center justify-center text-blue-600 gap-2 w-[100px] h-10 rounded-md bg-blue-50 cursor-pointer hover:bg-blue-100 transition-all duration-100"
+            onClick={handleLogIn}
+          >
+            <CiLogin />
+            <span>LogIn</span>
+          </button>
+        )}
+      </div>
     </div>
   );
 };

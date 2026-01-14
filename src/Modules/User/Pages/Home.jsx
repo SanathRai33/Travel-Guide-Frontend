@@ -10,6 +10,7 @@ import HomeBar from '../Component/HomeBar';
 import PackageView from '../Component/PackageView';
 import RestaurantView from '../Component/RestaurantView';
 import HotelView from '../Component/HotelView';
+import { ToastContainer } from 'react-toastify';
 
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
         <Route path="/PackageView/:id" element={<PackageView />} />
         <Route path="/HotelView/:id" element={<HotelView />} />
       </Routes>
+      <ToastContainer/>
     </div>
   );
 }
