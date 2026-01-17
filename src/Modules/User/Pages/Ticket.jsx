@@ -4,9 +4,10 @@ import "../css/Ticket.css";
 import Flight from "../Component/Flight";
 import Header from "../Component/Header";
 import TicketOptions from "../Component/TicketOptions";
+import BusTicket from "../Component/BusTicket";
 
 export default function Ticket() {
-  const [activeOption, setActiveOption] = useState("Flight"); // Default active
+  const [activeOption, setActiveOption] = useState("");
 
   const handleOptionSelect = (option) => {
     setActiveOption(option);
@@ -15,7 +16,7 @@ export default function Ticket() {
   const renderContent = () => {
     switch(activeOption) {
       case "Bus":
-        return <div>Bus Booking Component</div>;
+        return <BusTicket />;
       case "Train":
         return <Train />;
       case "Flight":
@@ -23,7 +24,7 @@ export default function Ticket() {
       case "Yacht":
         return <div>Yacht Booking Component</div>;
       default:
-        return <div>Select a travel mode to start booking</div>;
+        return <div className="shadow-md text-center bg-white rounded-2xl py-5">Select a travel mode to start booking</div>;
     }
   };
 

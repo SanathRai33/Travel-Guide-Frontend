@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Header from "../Component/Header";
-import StatusBar from "../../Admin/Component/StatusBar";
+import StatusBar from "../Component/StatusBar";
 import BookedCard from "../Component/BookedCard";
-import StatusCount from "../../Admin/Component/StatusCount";
+import StatusCount from "../Component/StatusCount";
 
 const BookStatus = () => {
   const [status, setStatus] = useState("Booked");
