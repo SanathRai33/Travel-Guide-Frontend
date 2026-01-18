@@ -1,10 +1,18 @@
 import React from "react";
-import { FaCalendar, FaLocationArrow, FaStar } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import { FaStar } from "react-icons/fa";
 import { IoLocationOutline } from "react-icons/io5";
 import { CiCalendar } from "react-icons/ci";
 import { LuMountainSnow } from "react-icons/lu";
 
 const PackageCard = () => {
+
+  const navigate = useNavigate();
+
+  const handleView = () =>{
+    navigate(`/packages/${1}`)
+  }
+
   return (
     <div className="flex flex-col rounded-3xl overflow-hidden shadow-sm bg-white">
       <div className="relative h-48">
@@ -39,7 +47,7 @@ const PackageCard = () => {
             <p className="m-0 text-sm text-gray-600">Starting from</p>
             <h4 className="text-2xl font-bold text-blue-600 m-0" >$ 499/<span className="text-sm text-blue-600 font-normal" >person</span></h4>
           </div>
-          <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+          <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors" onClick={handleView}>
             Book Now
           </button>
         </div>
