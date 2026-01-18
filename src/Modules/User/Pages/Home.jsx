@@ -9,7 +9,7 @@ import Packages from './Packages';
 import HomeBar from '../Component/HomeBar';
 import PackageView from './PackageView';
 import RestaurantView from '../Component/RestaurantView';
-import HotelView from '../Component/HotelView';
+import HotelView from './HotelView';
 import { ToastContainer } from 'react-toastify';
 
 export default function Home() {

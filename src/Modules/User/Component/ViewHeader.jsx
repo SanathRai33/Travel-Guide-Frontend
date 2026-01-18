@@ -4,7 +4,7 @@ import { FaArrowLeftLong } from "react-icons/fa6";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaStar } from "react-icons/fa6";
 
-const ViewHeader = () => {
+const ViewHeader = ({image, name, location, review}) => {
 
     const navigate = useNavigate();
 
@@ -14,22 +14,22 @@ const ViewHeader = () => {
 
     return (
         <div className='w-full relative h-full'>
-            <img src="https://www.pelago.com/img/destinations/paris/0619-0939_paris.jpg" alt="Paris" className='w-full h-full object-cover' />
+            <img src={image} alt="Paris" className='w-full h-full object-cover' />
             <div className='absolute inset-0 bg-gradient-to-t from-black/70 to-transparent'></div>
             <div className='absolute bottom-0 left-0 right-0 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 '>
                 <button className='flex items-center space-x-2 text-white mb-3 hover:opacity-80' onClick={goBack}>
                     <FaArrowLeftLong className='w-5 h-5' />
                     <span>Back</span>
                 </button>
-                <h1 className='text-4xl font-bold text-white mb-2'>Bali, Paradise</h1>
+                <h1 className='text-4xl font-bold text-white mb-2'>{name}</h1>
                 <div className='flex items-center space-x-4 text-white'>
                     <div className='flex items-end'>
                         <FaLocationDot className="h-5 w-5 mr-2 fill-blue-600 text-blue-600" />
-                        <span className='h-5'>Bali, Indonesia</span>
+                        <span className='h-5'>{location}</span>
                     </div>
                     <div className='flex items-end'>
                         <FaStar className='h-5 w-5 mr-1 fill-yellow-400 text-yellow-400' />
-                        <span className='h-5'>4.8 (245 reviews)</span>
+                        <span className='h-5'>{review}</span>
                     </div>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { IoCheckmark } from "react-icons/io5";
 
-const PackagDetail = () => {
+const PackageDetail = () => {
 
     const arr = [
         {
@@ -107,4 +107,4 @@ const PackagDetail = () => {
     )
 }
 
-export default PackagDetail
+export default PackageDetail

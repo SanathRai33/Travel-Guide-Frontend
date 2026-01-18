@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import {FaStar, FaWifi } from "react-icons/fa";
 import { IoLocationOutline } from "react-icons/io5";
 import { TbParkingCircleFilled } from "react-icons/tb";
@@ -6,6 +7,13 @@ import { PiForkKnifeFill } from "react-icons/pi";
 import { CgGym } from "react-icons/cg";
 
 const HotelCard = () => {
+
+  const navigate = useNavigate();
+
+  const handleView = () =>{
+    navigate(`/hotels/${1}`)
+  }
+
   return (
     <div className="flex flex-col rounded-3xl overflow-hidden shadow-sm bg-white">
       <div className="relative h-48">
@@ -42,7 +50,7 @@ const HotelCard = () => {
             <p className="m-0 text-sm text-gray-600">Starting from</p>
             <h4 className="text-2xl font-bold text-blue-600 m-0" >$ 499/<span className="text-sm text-blue-600 font-normal" >night</span></h4>
           </div>
-          <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+          <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors" onClick={handleView}>
             Book Now
           </button>
         </div>
