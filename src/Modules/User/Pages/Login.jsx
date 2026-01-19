@@ -1,132 +1,85 @@
-import React, { useState } from "react";
-import { MDBBtn, MDBContainer, MDBCard, MDBCardBody, MDBIcon, MDBCardImage, MDBRow, MDBCol, MDBInput } from "mdb-react-ui-kit";
-import "mdb-react-ui-kit/dist/css/mdb.min.css";
-import "@fortawesome/fontawesome-free/css/all.min.css";
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom'
-import LoginImg from '../Images/Login.avif'
+import React from 'react'
+import LOGO from "../Images/Logo_Bg.png";
+import { CiLock, CiMail } from "react-icons/ci";
+import { IoEyeOutline } from "react-icons/io5";
+import { FcGoogle } from "react-icons/fc";
+import { FaFacebook } from "react-icons/fa";
 
-export default function Register() {
-
-  const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-  });
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-  
-  const handleSubmit = async(e) => {
-
-    e.preventDefault();
-    
-    await axios.post("http://127.0.0.1:7002/api/login", formData)
-    .then((res) => {
-      console.log(res)
-      if (res.data.success) {
-        localStorage.setItem('Usertoken', res.data.authtoken);
-        alert("Logged in successfully", "Success");
-        navigate('/');
-      }else{
-        
-      }
-    })
-    .catch((error) => {});
-  console.log("Form Data:", formData);
-};
-
-  const handleClear = (e) =>{
-    setFormData({
-      name: '',
-      email: '',
-      password: '',
-    });
-  }
-
+const Login = () => {
   return (
-      <div className="bg-dark" style={{ height: '100%', paddingBottom: '5px' }}>
-        <MDBContainer fluid>
-          <MDBRow className="d-flex justify-content-center align-items-center h-100">
-            <MDBCol>
-              <MDBCard className="my-4 bg-secondary">
-                <MDBRow className="g-0 d-flex justify-content-center">
-    
-                  <MDBCol md="5" style={{height: '676px'}} className="bg-light rounded-start">
-                    <MDBCardBody className="text-black d-flex flex-column justify-content-center align-items-center h-100">
-                      <h1 style={{fontSize: '3rem', fontWeight: '900'}} className="mb-4 text-center">Login</h1>
+    <div className='min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center p-4'>
+      <div className='max-w-md w-full'>
+        <div className='text-center mb-[32px]'>
+          <div className='inline-flex items-center justify-center bg-blue-600 overflow-hidden rounded-full shadow-lg mb-3 w-14 h-14'>
+            <img src={LOGO} alt="Logo" className='w-full h-full' />
+          </div>
+          <h1 className='text-3xl font-bold text-gray-900 mb-2'>Welcome Back!</h1>
+          <p className='text-gray-600 m-0'>Sign in to continue your journey with TravelVista</p>
+        </div>
 
-                        <div className="d-flex flex-row align-items-center justify-content-center">
-                          <p className="lead fw-normal mb-0 me-3">Log in with</p>
+        <div className='bg-white rounded-2xl shadow-xl p-8'>
+          <form action="" className='space-y-6'>
+            <div>
+              <label htmlFor="" className='block text-sm font-medium text-gray-700 mb-2'>Email</label>
+              <div className='relative'>
+                <CiMail className='absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400' />
+                <input type="email" className="w-full pl-11 pr-4 py-[12px] border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  placeholder="you@example.com" required value="" />
+              </div>
+            </div>
+            <div>
+              <label htmlFor="" className='block text-sm font-medium text-gray-700 mb-2'>Password</label>
+              <div className='relative'>
+                <CiLock className='absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400' />
+                <input type="password" className="w-full pl-11 pr-11 py-[12px] border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  placeholder="Enter your password" required value="" />
+                <button type="button" className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
+                  <IoEyeOutline className='w-5 h-5' />
+                </button>
+              </div>
+            </div>
+            <div className='flex items-center justify-between'>
+              <label htmlFor="" className='flex items-center' >
+                <input type="checkbox" name="" id=" " className='w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500' />
+                <span className='ml-2 text-sm text-gray-700'>Remember me</span>
+              </label>
+              <a href="" className='text-sm text-blue-600 hover:text-blue-700 font-medium'>Fprget Password?</a>
+            </div>
+            <button type='submit' className='w-full bg-blue-600 text-white py-[12px] rounded-lg font-semibold hover:bg-blue-700 transition-colors'>Submit</button>
+          </form>
+          <div className='relative my-6'>
+            <div className='absolute inset-0 flex items-center'>
+              <div className='w-full border-t border-gray-300'></div>
+            </div>
+            <div className='relative flex justify-center text-sm'>
+              <span className='px-2 bg-white text-gray-500'>Or continue with</span>
+            </div>
+          </div>
+          <div className='grid grid-cols-2 gap-4'>
+            <button className='flex items-center justify-center px-3 py-[12px] border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors'>
+              <FcGoogle className='h-5 w-5 mr-2' />
+              <span className='text-sm font-medium text-gray-700'>Google</span>
+            </button>
+            <button className='flex items-center justify-center px-3 py-[12px] border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors'>
+              <FaFacebook className='h-5 w-5 mr-2 text-blue-600' />
+              <span className='text-sm font-medium text-gray-700'>Facebook</span>
+            </button>
+          </div>
+          <p className='text-center text-sm text-gray-600 mt-6 mb-0'>
+            Don't have an account?
+            <a href="/register" className='text-blue-600 hover:text-blue-700 font-semibold'>Sign up for free</a>
+          </p>
+        </div>
 
-                          <MDBBtn floating size="md" tag="a" className="me-2">
-                            <MDBIcon fab icon="facebook-f" />
-                          </MDBBtn>
-
-                          <MDBBtn floating size="md" tag="a" className="me-2">
-                            <MDBIcon fab icon="twitter" />
-                          </MDBBtn>
-
-                          <MDBBtn floating size="md" tag="a" className="me-2">
-                            <MDBIcon fab icon="linkedin-in" />
-                          </MDBBtn>
-                        </div>
-
-                        <div className="divider d-flex align-items-center my-4">
-                          <p className="text-center fw-bold mx-3 mb-0">Or</p>
-                        </div>
-    
-                      <MDBCol md="8">
-                        <MDBInput onChange={handleChange} name="name" value={formData.name} wrapperClass="mb-3" label="Full Name" size="lg" id="form1" type="text" />
-                      </MDBCol>
-    
-                      <MDBCol md="8">
-                        <MDBInput onChange={handleChange} name="email" value={formData.email} wrapperClass="mb-3" label="Email ID" size="lg" id="form3" type="email" />
-                      </MDBCol>
-    
-                      <MDBCol md="8">
-                        <MDBInput onChange={handleChange} name="password" value={formData.password} wrapperClass="mb-3" label="Password" size="lg" id="form5" type="password" />
-                      </MDBCol>
-
-                      <MDBCol md="8">
-                        <div className="d-flex gap-5  justify-content-center align-items-center">
-                          <p><input type="checkbox" /> Remember me</p>
-                          <p className="text-info ms-5">Forgot Password?</p>
-                        </div>
-                      </MDBCol>
-    
-                      <div className="d-flex justify-content-center pt-3 pb-3">
-                        <MDBBtn className="ms-2 me-4" color="danger" size='lg' onClick={handleClear}>Reset</MDBBtn>
-                        <MDBBtn className="ms-2" type="submit" color="info" size="lg" onClick={handleSubmit}>Log In</MDBBtn>
-                      </div>
-    
-                      <MDBCol md="8">
-                        <div className="d-flex justify-content-center">
-                          <p>Don't have an account?</p>
-                          <a className="ms-2" href="/register">Register</a>
-                        </div>
-                      </MDBCol>
-                    </MDBCardBody>
-                  </MDBCol>
-
-                  <MDBCol md="5" className="d-none d-md-block bg-info w-80 rounded-end overflow-hidden position-relative">
-                    <MDBCardImage className="w-100 h-100"
-                      src={LoginImg} 
-                      alt="Sample" fluid style={{ objectFit: "cover", objectPosition: "center" }} />
-    
-                    <h1 className="position-absolute top-50 start-50 translate-middle text-white text-center w-100" 
-                      style={{ fontSize: '2.9em', fontWeight: 900, fontFamily: 'sans-serif', textShadow: '3px 3px 3px black' }}>
-                      Regal Roamers
-                    </h1>
-                  </MDBCol>
-    
-                </MDBRow>
-              </MDBCard>
-            </MDBCol>
-          </MDBRow>
-        </MDBContainer>
+        <p className='text-center text-xs text-gray-500 mt-8'>
+          By signing in, you agree to our
+          <a href="#" class="text-blue-600 hover:underline"> Terms of Service </a>
+          and
+          <a href="#" class="text-blue-600 hover:underline"> Privacy Policy</a>
+        </p>
       </div>
-    );
-  }    
+    </div>
+  )
+}
+
+export default Login
