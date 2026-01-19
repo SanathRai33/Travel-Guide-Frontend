@@ -1,10 +1,18 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import {FaStar, FaWifi } from "react-icons/fa";
 import { IoLocationOutline } from "react-icons/io5";
 import { TbParkingCircleFilled } from "react-icons/tb";
 import { PiBowlSteamDuotone } from "react-icons/pi";
 
 const RestaurantCard = () => {
+  
+  const navigate = useNavigate();
+
+  const handleView = () =>{
+    navigate(`/restaurant/${1}`)
+  }
+
   return (
     <div className="flex flex-col rounded-3xl overflow-hidden shadow-sm bg-white">
       <div className="relative h-48">
@@ -45,7 +53,7 @@ const RestaurantCard = () => {
             <p className="m-0 text-sm text-gray-600">Per table <span className="text-[10px]" > (max 4)</span></p>
             <h4 className="text-2xl font-bold text-blue-600 m-0" >$ 499</h4>
           </div>
-          <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+          <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors" onClick={handleView}>
             Reserver Table
           </button>
         </div>
