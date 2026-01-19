@@ -1,209 +1,121 @@
-import React, { useState } from "react";
-import {
-  MDBBtn, MDBContainer, MDBCard, MDBCardBody, MDBCardImage, MDBRow, MDBCol, MDBInput, MDBRadio,
-  MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem
-} from "mdb-react-ui-kit";
-import "mdb-react-ui-kit/dist/css/mdb.min.css";
-import "@fortawesome/fontawesome-free/css/all.min.css";
-import axios from 'axios';
-import { useNavigate } from "react-router-dom";
-import RegImg from '../Images/Login.avif'
+import React from 'react'
+import LOGO from "../Images/Logo_Bg.png";
+import { FaRegUser } from "react-icons/fa";
+import { MdOutlineEmail, MdOutlinePhone } from "react-icons/md";
+import { CiLock } from "react-icons/ci";
+import { IoEyeOutline } from "react-icons/io5";
+import { FcGoogle } from "react-icons/fc";
+import { FaFacebook } from "react-icons/fa";
 
-export default function Register() {
-
-  const navigate = useNavigate();
-
-  const [formData, setFormData] = useState({
-    name: '',
-    gender: '',
-    email: '',
-    phone: '',
-    password: '',
-    c_password: '',
-    city: '',
-    country: '',
-  });
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-
-  const handleSubmit = async (e) => {
-    if (
-      !formData.gender || !formData.phone ||
-      !formData.city || !formData.country
-    ) {
-      alert("All fields are required. Please fill out the entire form.");
-      return;
-    } else if (formData.password !== formData.c_password) {
-      alert("Your password and confirm password must be the same. Please check and enter again.")
-      return
-    } else if (formData.password.length < 8) {
-      alert("Password must be at least 8 characters long")
-      return
-    } else if (formData.name.length <= 3) {
-      alert("Use fullname!")
-      return
-    } else {
-
-      e.preventDefault();
-
-      await axios.post('http://127.0.01:7002/api/insert', formData)
-
-        .then((res) => {
-          if (res.saveuser) {
-            console.log("Inserted Successfully");
-          }
-        })
-        .catch((error) => {
-        })
-      console.log('Form Data:', formData);
-    }
-    alert("Signed in successfully", "Success");
-    navigate('/')
-  };
-
-  const handleClear = (e) => {
-    setFormData({
-      name: '',
-      gender: '',
-      email: '',
-      phone: '',
-      password: '',
-      c_password: '',
-      city: '',
-      country: '',
-    });
-  }
-
-  const Place = [
-    { city: "New York", country: "USA" },
-    { city: "Paris", country: "France" },
-    { city: "Tokyo", country: "Japan" },
-    { city: "London", country: "UK" },
-    { city: "Dubai", country: "UAE" },
-    { city: "Sydney", country: "Australia" },
-    { city: "Rome", country: "Italy" },
-    { city: "Bangkok", country: "Thailand" },
-    { city: "Istanbul", country: "Turkey" },
-    { city: "Rio de Janeiro", country: "Brazil" }
-  ];
-
-
+const Register = () => {
   return (
-    <div className="bg-dark" style={{ height: '100%', paddingBottom: '5px' }}>
-      <MDBContainer fluid>
-        <MDBRow className="d-flex justify-content-center align-items-center h-100">
-          <MDBCol>
-            <MDBCard className="my-4 bg-secondary">
-              <MDBRow className="g-0 d-flex justify-content-center">
-
-                <MDBCol md="5" className="d-none d-md-block bg-info w-80 rounded-start overflow-hidden position-relative">
-                  <MDBCardImage className="w-100 h-100"
-                    src={RegImg}
-                    alt="Sample" fluid style={{ objectFit: "cover", objectPosition: "center" }} />
-
-                  <h1 className="position-absolute top-50 start-50 translate-middle text-white text-center w-100"
-                    style={{ fontSize: '2.9em', fontWeight: 900, fontFamily: 'sans-serif', textShadow: '3px 3px 3px black' }} >
-                    Regal Roamers
-                  </h1>
-                </MDBCol>
-
-
-                <MDBCol md="5" style={{ height: '676px' }} className="bg-light rounded-end">
-                  <MDBCardBody className="text-black d-flex flex-column justify-content-center align-items-center">
-                    <h2 className="mb-5 fs-1 fw-bold text-center">Sign In</h2>
-
-
-
-                    <MDBCol md="8">
-                      <MDBInput onChange={handleChange} name="name" value={formData.name} wrapperClass="mb-3" label="Full Name" size="lg" id="form1" type="text" />
-                    </MDBCol>
-
-                    <div className="d-md-flex justify-content-start align-items-center mb-3">
-                      <h6 className="fw-bold mb-0 me-4">Gender: </h6>
-                      <MDBRadio name="gender" id="inlineRadio1" value="Female" label="Female" inline onChange={handleChange} checked={formData.gender === "Female"} />
-                      <MDBRadio name="gender" id="inlineRadio2" value="Male" label="Male" inline onChange={handleChange} checked={formData.gender === "Male"} />
-                      <MDBRadio name="gender" id="inlineRadio3" value="Other" label="Other" inline onChange={handleChange} checked={formData.gender === "Other"} />
-                    </div>
-
-                    <MDBCol md="8">
-                      <MDBInput onChange={handleChange} name="email" value={formData.email} wrapperClass="mb-3" label="Email ID" size="lg" id="form3" type="email" />
-                    </MDBCol>
-
-                    <MDBCol md="8">
-                      <MDBInput onChange={handleChange} name="phone" value={formData.phone} wrapperClass="mb-3" label="Phone Number" size="lg" id="form4" type="text" />
-                    </MDBCol>
-
-                    <MDBCol md="8">
-                      <MDBInput onChange={handleChange} name="password" value={formData.password} wrapperClass="mb-3" label="Password" size="lg" id="form5" type="password" />
-                    </MDBCol>
-
-                    <MDBCol md="8">
-                      <MDBInput onChange={handleChange} name="c_password" value={formData.c_password} wrapperClass="mb-3" label="Confirm Password" size="lg" id="form6" type="password" />
-                    </MDBCol>
-
-
-                    <MDBRow style={{ width: '390px' }} className="justify-content-start gx-6 gap-4">
-                      <MDBCol md="5">
-                        <MDBDropdown style={{ width: '180px' }}>
-                          <MDBDropdownToggle className="d-flex justify-content-center align-items-center mb-3 w-100 bg-light rounded-2 shadow-0 text-muted border border-secondary" size="lg">
-                            {formData.city || "Select a City"}
-                          </MDBDropdownToggle>
-                          <MDBDropdownMenu style={{ width: "100%" }}>
-                            {Place.map((cities, index) => (
-                              <MDBDropdownItem key={index} link onClick={(e) => {
-                                e.preventDefault();
-                                setFormData({ ...formData, city: cities.city });
-                              }}>
-                                {cities.city}
-                              </MDBDropdownItem>
-                            ))}
-                          </MDBDropdownMenu>
-                        </MDBDropdown>
-                      </MDBCol>
-
-                      <MDBCol md="5">
-                        <MDBDropdown style={{ width: '180px' }}>
-                          <MDBDropdownToggle className="d-flex justify-content-center align-items-center mb-3 w-100 bg-light rounded-2 shadow-0 text-muted border border-secondary" size="lg">
-                            {formData.country || "Select a Country"}
-                          </MDBDropdownToggle>
-                          <MDBDropdownMenu style={{ width: "100%" }}>
-                            {Place.map((countries, index) => (
-                              <MDBDropdownItem key={index} link onClick={(e) => {
-                                e.preventDefault();
-                                setFormData({ ...formData, country: countries.country });
-                              }}>
-                                {countries.country}
-                              </MDBDropdownItem>
-                            ))}
-                          </MDBDropdownMenu>
-                        </MDBDropdown>
-                      </MDBCol>
-                    </MDBRow>
-
-
-
-                    <div className="d-flex justify-content-center pt-3 pb-3">
-                      <MDBBtn className="ms-2 me-4" color="danger" size="lg" onClick={handleClear}>Reset all</MDBBtn>
-                      <MDBBtn className="ms-2" type="submit" color="info" size="lg" onClick={handleSubmit}>Register</MDBBtn>
-                    </div>
-
-                    <MDBCol md="8">
-                      <div className="d-flex justify-content-center ">
-                        <p>Do you have an account?</p>
-                        <a className="ms-2" href="/login">Login</a>
-                      </div>
-                    </MDBCol>
-
-                  </MDBCardBody>
-                </MDBCol>
-              </MDBRow>
-            </MDBCard>
-          </MDBCol>
-        </MDBRow>
-      </MDBContainer>
+    <div className='min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center p-4'>
+      <div className='max-w-2xl w-full'>
+        <div className='text-center mb-[32px]'>
+          <div className='inline-flex items-center justify-center bg-blue-600 overflow-hidden rounded-full shadow-lg mb-3 w-14 h-14'>
+            <img src={LOGO} alt="Logo" className='w-full h-full' />
+          </div>
+          <h1 className='text-3xl font-bold text-gray-900 mb-2'>Create Your Account</h1>
+          <p className='text-gray-600 m-0 p-0'>Join TripHarbor and start your adventure today</p>
+        </div>
+        <div className='bg-white rounded-2xl shadow-xl p-8'>
+          <form action="" className='space-y-6'>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                <div class="relative">
+                  <FaRegUser className='absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400' />
+                  <input type="text" class="w-full pl-11 pr-3 py-[12px] border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="John" required="" value="" />
+                </div>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                <div class="relative">
+                  <FaRegUser className='absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400' />
+                  <input type="text" class="w-full pl-11 pr-3 py-[12px] border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Doe" required="" value="" />
+                </div>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                <div class="relative">
+                  <MdOutlineEmail className='absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400' />
+                  <input type="email" class="w-full pl-11 pr-3 py-[12px] border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="John@gamil.com" required="" value="" />
+                </div>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Phone</label>
+                <div class="relative">
+                  <MdOutlinePhone className='absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400' />
+                  <input type="tel" class="w-full pl-11 pr-3 py-[12px] border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="+91 9876543210" required="" value="" />
+                </div>
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+              <div class="relative">
+                <CiLock className='absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400' />
+                <input type="password" class="w-full pl-11 pr-11 py-[12px] border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Create a strong password" required="" value="" />
+                <button type="button" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
+                  <IoEyeOutline className='h-5 w-5' />
+                </button>
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Confirm Password</label>
+              <div class="relative">
+                <CiLock className='absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400' />
+                <input type="password" class="w-full pl-11 pr-11 py-[12px] border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Confirm your password" required="" value="" />
+                <button type="button" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
+                  <IoEyeOutline className='h-5 w-5' />
+                </button>
+              </div>
+            </div>
+            <div class="space-y-3">
+              <label class="flex items-start">
+                <input type="checkbox" class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 mt-1" required="" />
+                <span class="ml-2 text-sm text-gray-700">I agree to the
+                  <a href="#" class="text-blue-600 hover:underline">Terms of Service</a> and
+                  <a href="#" class="text-blue-600 hover:underline">Privacy Policy</a>
+                </span>
+              </label>
+              <label class="flex items-start">
+                <input type="checkbox" class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 mt-1" />
+                <span class="ml-2 text-sm text-gray-700">Send me exclusive travel deals and newsletters</span>
+              </label>
+            </div>
+            <button type="submit" class="w-full bg-blue-600 text-white py-[12px] rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center justify-center space-x-2">
+              <span>Create Account</span>
+            </button>
+          </form>
+          <div className='relative my-6'>
+            <div class="absolute inset-0 flex items-center">
+              <div class="w-full border-t border-gray-300">
+              </div>
+            </div>
+            <div class="relative flex justify-center text-sm">
+              <span class="px-2 bg-white text-gray-500">Or sign up with</span>
+            </div>
+          </div>
+          <div className='grid grid-cols-2 gap-4'>
+            <button className='flex items-center justify-center px-3 py-[12px] border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors'>
+              <FcGoogle className='h-5 w-5 mr-2' />
+              <span className='text-sm font-medium text-gray-700'>Google</span>
+            </button>
+            <button className='flex items-center justify-center px-3 py-[12px] border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors'>
+              <FaFacebook className='h-5 w-5 mr-2 text-blue-600' />
+              <span className='text-sm font-medium text-gray-700'>Facebook</span>
+            </button>
+          </div>
+          <p className='text-center text-sm text-gray-600 mt-6 mb-0'>
+            Don't have an account?
+            <a href="/register" className='text-blue-600 hover:text-blue-700 font-semibold'>{" "}Sign up for free</a>
+          </p>
+        </div>
+      </div>
     </div>
-  );
+  )
 }
+
+export default Register

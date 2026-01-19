@@ -14,7 +14,7 @@ const Login = () => {
             <img src={LOGO} alt="Logo" className='w-full h-full' />
           </div>
           <h1 className='text-3xl font-bold text-gray-900 mb-2'>Welcome Back!</h1>
-          <p className='text-gray-600 m-0'>Sign in to continue your journey with TravelVista</p>
+          <p className='text-gray-600 m-0'>Sign in to continue your journey with TripHarbor</p>
         </div>
 
         <div className='bg-white rounded-2xl shadow-xl p-8'>
@@ -43,7 +43,7 @@ const Login = () => {
                 <input type="checkbox" name="" id=" " className='w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500' />
                 <span className='ml-2 text-sm text-gray-700'>Remember me</span>
               </label>
-              <a href="" className='text-sm text-blue-600 hover:text-blue-700 font-medium'>Fprget Password?</a>
+              <a href="" className='text-sm text-blue-600 hover:text-blue-700 font-medium'>Forget Password?</a>
             </div>
             <button type='submit' className='w-full bg-blue-600 text-white py-[12px] rounded-lg font-semibold hover:bg-blue-700 transition-colors'>Submit</button>
           </form>
@@ -67,7 +67,7 @@ const Login = () => {
           </div>
           <p className='text-center text-sm text-gray-600 mt-6 mb-0'>
             Don't have an account?
-            <a href="/register" className='text-blue-600 hover:text-blue-700 font-semibold'>Sign up for free</a>
+            <a href="/register" className='text-blue-600 hover:text-blue-700 font-semibold'>{" "}Sign up for free</a>
           </p>
         </div>
 
