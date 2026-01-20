@@ -6,6 +6,7 @@ import Restuarant from './Restuarant';
 import Ticket from './Ticket';
 import Things from './Things';
 import Packages from './Packages';
+import Profile from './Profile';
 import HomeBar from '../Component/HomeBar';
 import PackageView from './PackageView';
 import RestaurantView from './RestaurantView';
@@ -18,6 +19,7 @@ export default function Home() {
       <HomeBar /> 
       <Routes>
         <Route path="/" element={<SearchAll />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/packages" element={<Packages />} />
         <Route path="/hotels" element={<Hotel />} />
         <Route path="/restuarant" element={<Restuarant />} />

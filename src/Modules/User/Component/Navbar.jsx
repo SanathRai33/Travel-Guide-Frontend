@@ -13,7 +13,7 @@ const Navbar = () => {
 
   const handleLogIn = () => navigate("/login");
   const viewProfile = (Navbar) => {
-    toast.success('Feature comming soon...')
+    navigate("/profile")
   };
 
   // ---------------------------------------------------------------------------
