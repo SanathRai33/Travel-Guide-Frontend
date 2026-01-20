@@ -1,74 +1,63 @@
-import React, { useState, useEffect } from "react";
-import { Card, CardContent, CardMedia, Typography, Button, Box, Grid, MenuItem, Select, FormControl, InputLabel } from "@mui/material";
-import axios from "axios";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import '../css/Packages.css';
-import { FaSearch } from 'react-icons/fa';
-import Lottie from "lottie-react";
-import errorAnimation from "../Images/error.json";
-// import Travel from '../Images/Travel.avi'
-import Travel from '../Images/Travel.jpg'
 import PackageFilter from "../Component/PackageFilter";
 import PackageCard from "../Component/PackageCard";
 import Header from "../Component/Header";
+import { usePackages } from "../hooks/usePackages";
+
 
 const Packages = () => {
-  const [packageData, setPackageData] = useState([]);
-  const [searchPackage, setSearchPackage] = useState("");
-  const [sortBy, setSortBy] = useState("");
-  const [error, setError] = useState(false)
+  // const [searchPackage, setSearchPackage] = useState("");
+  // const [sortBy, setSortBy] = useState("");
 
-  useEffect(() => {
-    axios.get("http://127.0.0.1:7002/package/get")
-      .then((res) => {
-        setPackageData(res.data)
-      })
-      .catch(() => {
-        setError(true)
-      });
-  }, []);
+  const { packages, setPackages, loading, error } = usePackages();
 
-  const handleSearchChange = (e) => {
-    setSearchPackage(e.target.value);
-  };
+  // const handleSearchChange = (e) => {
+  //   setSearchPackage(e.target.value);
+  // };
 
-  const handleSortChange = (e) => {
-    setSortBy(e.target.value);
-  };
+  // const handleSortChange = (e) => {
+  //   setSortBy(e.target.value);
+  // };
 
-  const filteredPackages = packageData.filter(pkg =>
-    pkg.title.toLowerCase().includes(searchPackage.toLowerCase()) ||
-    pkg.price.toLowerCase().includes(searchPackage.toLowerCase()) ||
-    pkg.location.toLowerCase().includes(searchPackage.toLowerCase()) ||
-    pkg.duration.toLowerCase().includes(searchPackage.toLowerCase()) ||
-    pkg.category.toLowerCase().includes(searchPackage.toLowerCase()) ||
-    pkg.description.toLowerCase().includes(searchPackage.toLowerCase())
-  );
+  // const filteredPackages = packages.filter(pkg =>
+  //   pkg.title.toLowerCase().includes(searchPackage.toLowerCase()) ||
+  //   pkg.price.toLowerCase().includes(searchPackage.toLowerCase()) ||
+  //   pkg.location.toLowerCase().includes(searchPackage.toLowerCase()) ||
+  //   pkg.duration.toLowerCase().includes(searchPackage.toLowerCase()) ||
+  //   pkg.category.toLowerCase().includes(searchPackage.toLowerCase()) ||
+  //   pkg.description.toLowerCase().includes(searchPackage.toLowerCase())
+  // );
 
 
-  const sortedPackages = [...filteredPackages].sort((a, b, pkg) => {
-    if (sortBy === "lowPrice") return a.price - b.price;
-    else if (sortBy === "highPrice") return b.price - a.price;
-    else if (sortBy === "lowRating") return a.rating - b.rating;
-    else if (sortBy === "HighRating") return b.rating - a.rating;
-    else return 0;
-  });
+  // const sortedPackages = [...filteredPackages].sort((a, b, pkg) => {
+  //   if (sortBy === "lowPrice") return a.price - b.price;
+  //   else if (sortBy === "highPrice") return b.price - a.price;
+  //   else if (sortBy === "lowRating") return a.rating - b.rating;
+  //   else if (sortBy === "HighRating") return b.rating - a.rating;
+  //   else return 0;
+  // });
 
   return (
     <div className="lg:px-40 lg:py-10 flex justify-center items-center flex-col gap-2 bg-[#F8FAFC] ">
       <Header title="Tour Packages" description="Explore our curated selection of amazing tour packages" />
       <div className="w-full bg-white shadow-md rounded-lg mb-4">
-      <PackageFilter/>
+        <PackageFilter />
       </div>
       <div className="w-full grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
+        {
+          packages.map((data, i) => (
+            <PackageCard title={data?.title} id={data?._id} image={data?.images[1]} duration={data?.duration} 
+            location={data?.location} basePrice={data?.basePrice} category={data.categories[0]} />
+          ))
+        }
+        {/* <PackageCard />
         <PackageCard />
-        <PackageCard />
-        <PackageCard />
-        <PackageCard />
+        <PackageCard /> */}
       </div>
-        
 
-      <Grid container spacing={4} justifyContent="center" p={2} mt={2}>
+
+      {/* <Grid container spacing={4} justifyContent="center" p={2} mt={2}> */}
 
         {/* {error ?
           (<Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" height="100vh" backgroundColor="#f8f8f8" mixBlendMode="darken" width="1050px">
@@ -82,25 +71,7 @@ const Packages = () => {
             </video>
             <h1 className="not-found">Result not found</h1>
           </Box>) : (<></>)} */}
-
-        {sortedPackages.map((pkg, index) => (
-          <Grid item xs={12} sm={6} md={3} key={index}>
-            <Card sx={{ maxWidth: 345, boxShadow: 4, borderRadius: 3, display: "flex", flexDirection: "column", height: "100%" }}>
-              <CardMedia component="img" height="200" image={`http://localhost:7002/api/uploads/${pkg.image}`} alt={pkg.title} />
-              <CardContent sx={{ flexGrow: 1, display: "flex", flexDirection: "column" }}>
-                <Typography variant="h6" fontWeight="bold">{pkg.title}</Typography>
-                <Typography variant="body2" color="text.secondary" my={1} sx={{ minHeight: "50px" }}>{pkg.description}</Typography>
-                <Typography variant="body2" fontWeight="bold" color="text.primary">📍 {pkg.location}</Typography>
-                <Typography variant="body2" color="text.secondary">⏳ {pkg.duration}</Typography>
-                <Typography variant="body2" color="text.secondary" pb={1}>⭐ {pkg.rating} / 5</Typography>
-                <Typography variant="h6" color="green" pb={1} pl={1}>${pkg.price}</Typography>
-                <Link to={`/PackageView/${pkg._id}`} style={{ margin: 'auto', width: "100%" }}><Button variant="contained" sx={{ pt: "auto", backgroundColor: "#007bff", width: "100%" }}>Explore More</Button></Link>
-
-              </CardContent>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
+      {/* </Grid> */}
     </div>
   );
 };
