@@ -1,22 +1,24 @@
 import React from 'react'
 import { FaRegClock } from "react-icons/fa6";
 
-const PaymentForm = () => {
+const PaymentForm = ({basePrice, duration, currency}) => {
 
     let permision = new Date()
 
-    console.log(permision)
+    const cur = currency === "INR" ? "₹" : currency === "USD" ? "$" : "₹"
+  
+    const price = basePrice > 9999 ? `${(basePrice/1000)}K`  : basePrice
 
     return (
         <div className='bg-white border-2 border-gray-200 rounded-xl p-6 sticky top-24'>
             <div className='mb-4'>
                 <div className='flex items-baseline space-x-2 mb-1'>
-                    <span className='text-3xl font-bold text-blue-600'>$ 1299</span>
+                    <span className='text-3xl font-bold text-blue-600'>{cur} {price}</span>
                     <span className='text-gray-600'>per person</span>
                 </div>
                 <div className='flex items-center text-sm text-gray-600'>
                     <FaRegClock className='h-4 w-4 mr-1' />
-                    7 Days
+                    {duration?.day} Days, {duration?.night} Nights
                 </div>
             </div>
 
@@ -41,7 +43,7 @@ const PaymentForm = () => {
             <div className='bg-gray-50 rounded-lg p-3 mb-4'>
                 <div className='flex justify-between mb-2'>
                     <span className='text-gray-600'>Price per person</span>
-                    <span className='font-semibold'>$100</span>
+                    <span className='font-semibold'>{cur}{price}</span>
                 </div>
                 <div className='flex justify-between mb-2'>
                     <span className='text-gray-600'>Guests</span>
@@ -50,7 +52,7 @@ const PaymentForm = () => {
                 <div className='border-t border-gray-300 my-2 pt-2'>
                     <div className='flex justify-between'>
                         <span className='font-semibold text-gray-900'>Total</span>
-                        <span className='text-2xl font-bold text-blue-600'>$ 200</span>
+                        <span className='text-2xl font-bold text-blue-600'>{cur} {price}</span>
                     </div>
                 </div>
             </div>

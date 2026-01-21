@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axiosInstance from "../axios/axiosInstance";
+import axiosInstance from "../../axios/axiosInstance";
 
 export const usePackages = () => {
 
@@ -10,7 +10,7 @@ export const usePackages = () => {
     useEffect(() => {
         const fetchPackages = async () => {
             try {
-                const res = await axiosInstance.get('packages/get'
+                const res = await axiosInstance.get('packages/'
                     // { withCredentials: true, }
                 );
                 setPackages(res?.data?.data);

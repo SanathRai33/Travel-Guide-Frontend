@@ -41,7 +41,7 @@ const PackageCard = ({id, image, title, location, duration, basePrice, currency,
           <div className="space-y-2 mb-4">
             <p className="flex items-center text-sm text-gray-600 gap-1 mb-0">
                 <IoLocationOutline />
-                <span>{location.country}, {location.city}</span>
+                <span>{location.country}, {location.city || location.city[0]}</span>
             </p>
             <p className="flex items-center text-sm text-gray-600 gap-1">
                 <CiCalendar />

@@ -12,6 +12,8 @@ const ViewHeader = ({image, name, location, review, style}) => {
         navigate(-1)
     }
 
+    console.log(location)
+    
     return (
         <div className='w-full relative h-full'>
             <img src={image} alt="Paris" className='w-full h-full object-cover' />
@@ -28,7 +30,7 @@ const ViewHeader = ({image, name, location, review, style}) => {
                 <div className='flex items-center space-x-4 text-white'>
                     <div className='flex items-end'>
                         <FaLocationDot className="h-5 w-5 mr-2 fill-blue-600 text-blue-600" />
-                        <span className='h-5'>{location}</span>
+                        <span className='h-5'>{location?.country}, {location?.city[0] || location?.city}</span>
                     </div>
                     <div className='flex items-end'>
                         <FaStar className='h-5 w-5 mr-1 fill-yellow-400 text-yellow-400' />

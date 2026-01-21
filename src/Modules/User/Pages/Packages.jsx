@@ -3,7 +3,7 @@ import '../css/Packages.css';
 import PackageFilter from "../Component/PackageFilter";
 import PackageCard from "../Component/PackageCard";
 import Header from "../Component/Header";
-import { usePackages } from "../hooks/usePackages";
+import { usePackages } from "../hooks/packages/usePackages";
 
 
 const Packages = () => {
