@@ -12,6 +12,8 @@ export const usePackages = () => {
     }, [])
 
     const fetchPackages = async () => {
+        setLoading(true);
+        setError(false);
         try {
             const res = await axiosInstance.get('packages/'
                 // { withCredentials: true, }

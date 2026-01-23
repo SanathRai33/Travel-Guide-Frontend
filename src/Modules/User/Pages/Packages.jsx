@@ -4,6 +4,7 @@ import PackageFilter from "../Component/package/PackageFilter";
 import PackageCard from "../Component/package/PackageCard";
 import Header from "../Component/layout/Header";
 import { usePackages } from "../hooks/packages/usePackages";
+import PackageLoader from "../loader/PackageLoader";
 
 
 const Packages = () => {
@@ -37,25 +38,25 @@ const Packages = () => {
   //   else if (sortBy === "HighRating") return b.rating - a.rating;
   //   else return 0;
   // });
-  
-  const handleReload = () =>{
+
+  const handleReload = () => {
     refetch()
   }
 
   if (error) {
     return (
-      <div className="lg:px-40 lg:py-10 flex justify-center items-center flex-col gap-2 bg-[#F8FAFC] ">
+      <div className="lg:px-40 lg:py-10 flex justify-center items-center flex-col gap-2 h-full">
         <Header title="Tour Packages" description="Explore our curated selection of amazing tour packages" />
-        <div className="mt-24 flex flex-col items-center text-center">
+        <div className="flex flex-col items-center text-center bg-[#FFFFFF] w-[90%] h-full lg:py-20 rounded-xl shadow-sm">
           <div className="flex h-14 w-14 items-center justify-center rounded-full bg-red-50">
             <span className="text-red-500 text-2xl">⚠</span>
           </div>
 
-          <h2 className="mt-6 text-xl font-semibold text-gray-800">
+          <h2 className="mt-6 text-xl font-semibold text-red-600">
             Something went wrong
           </h2>
 
-          <p className="mt-2 max-w-md text-gray-500">
+          <p className="mt-2 max-w-md text-red-500">
             We couldn’t load tour packages right now. Please check your connection or try again.
           </p>
 
@@ -69,22 +70,33 @@ const Packages = () => {
     )
   }
 
-
+  if (loading) {
+    return (
+      <div className="lg:px-40 lg:py-10 flex justify-center items-center flex-col gap-2 bg-[#F8FAFC] ">
+        <Header title="Tour Packages" description="Explore our curated selection of amazing tour packages" />
+        <PackageLoader />
+      </div>
+    )
+  }
 
   return (
     <div className="lg:px-40 lg:py-10 flex justify-center items-center flex-col gap-2 bg-[#F8FAFC] ">
       <Header title="Tour Packages" description="Explore our curated selection of amazing tour packages" />
-      <div className="w-full bg-white shadow-md rounded-lg mb-4">
-        <PackageFilter />
-      </div>
-      <div className="w-full grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
-        {
-          packages.map((data, i) => (
-            <PackageCard title={data?.title} id={data?._id} image={data?.images[1]} duration={data?.duration}
-              location={data?.location} basePrice={data?.basePrice} category={data.categories[0]} />
-          ))
-        }
-      </div>
+      {packages &&
+        <>
+          <div className="w-full bg-white shadow-md rounded-lg mb-4">
+            <PackageFilter />
+          </div>
+          <div className="w-full grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
+            {
+              packages.map((data, i) => (
+                <PackageCard title={data?.title} id={data?._id} image={data?.images[1]} duration={data?.duration}
+                  location={data?.location} basePrice={data?.basePrice} category={data.categories[0]} />
+              ))
+            }
+          </div>
+        </>
+      }
     </div>
   );
 };
