@@ -13,9 +13,9 @@ import { ChefHat, MicIcon } from "lucide-react";
 import "../css/Restaurant.css";
 import Lottie from "lottie-react";
 import errorAnimation from "../Images/error.json";
-import Header from "../Component/Header";
-import RestaurantFilter from "../Component/RestaurantFilter";
-import RestaurantCard from "../Component/RestaurantCard";
+import Header from "../Component/layout/Header";
+import RestaurantFilter from "../Component/restaurant/RestaurantFilter";
+import RestaurantCard from "../Component/restaurant/RestaurantCard";
 
 const Restaurant = () => {
   const [resData, setResData] = useState([]);

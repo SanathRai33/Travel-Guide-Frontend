@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import '../css/Packages.css';
-import PackageFilter from "../Component/PackageFilter";
-import PackageCard from "../Component/PackageCard";
-import Header from "../Component/Header";
+import PackageFilter from "../Component/package/PackageFilter";
+import PackageCard from "../Component/package/PackageCard";
+import Header from "../Component/layout/Header";
 import { usePackages } from "../hooks/packages/usePackages";
 
 

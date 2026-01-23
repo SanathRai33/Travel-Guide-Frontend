@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import Train from "../Component/Train";
+import Train from "../Component/ticket/Train";
 import "../css/Ticket.css";
-import Flight from "../Component/Flight";
-import Header from "../Component/Header";
-import TicketOptions from "../Component/TicketOptions";
-import BusTicket from "../Component/BusTicket";
+import Flight from "../Component/ticket/Flight";
+import Header from "../Component/layout/Header";
+import TicketOptions from "../Component/ticket/TicketOptions";
+import BusTicket from "../Component/ticket/BusTicket";
 
 export default function Ticket() {
   const [activeOption, setActiveOption] = useState("");

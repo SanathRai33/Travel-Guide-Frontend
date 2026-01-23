@@ -1,7 +1,7 @@
 import React from 'react'
 import ViewHeader from '../Component/ViewHeader';
 import PaymentForm from '../Component/PaymentForm';
-import RestaurantDetail from '../Component/RestaurantDetail';
+import RestaurantDetail from '../Component/restaurant/RestaurantDetail';
 
 const RestaurantView = () => {
 

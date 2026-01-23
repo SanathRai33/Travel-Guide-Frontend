@@ -7,7 +7,7 @@ import Ticket from './Ticket';
 import Things from './Things';
 import Packages from './Packages';
 import Profile from './Profile';
-import HomeBar from '../Component/HomeBar';
+import HomeBar from '../Component/layout/HomeBar';
 import PackageView from './PackageView';
 import RestaurantView from './RestaurantView';
 import HotelView from './HotelView';

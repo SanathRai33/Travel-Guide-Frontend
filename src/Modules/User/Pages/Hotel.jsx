@@ -24,10 +24,9 @@ import LocalParkingIcon from "@mui/icons-material/LocalParking";
 import SmokeFreeIcon from "@mui/icons-material/SmokeFree";
 import AcUnitIcon from "@mui/icons-material/AcUnit";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
-import HotelFilter from "../Component/HotelFilter";
-import Header from "../Component/Header";
-import PackageCard from "../Component/PackageCard";
-import HotelCard from "../Component/HotelCard";
+import HotelFilter from "../Component/hotel/HotelFilter";
+import Header from "../Component/layout/Header";
+import HotelCard from "../Component/hotel/HotelCard";
 
 const Hotel = () => {
   const [search, setSearch] = useState("");

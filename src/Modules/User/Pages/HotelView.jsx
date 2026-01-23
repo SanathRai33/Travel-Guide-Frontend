@@ -1,7 +1,7 @@
 import React from 'react'
 import ViewHeader from '../Component/ViewHeader';
 import PaymentForm from '../Component/PaymentForm';
-import HotelDetail from '../Component/HotelDetail';
+import HotelDetail from '../Component/hotel/HotelDetail';
 
 const HotelView = () => {
 

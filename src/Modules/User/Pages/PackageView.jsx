@@ -1,7 +1,7 @@
 import React from 'react'
 import ViewHeader from '../Component/ViewHeader';
 import PaymentForm from '../Component/PaymentForm';
-import PackageDetail from '../Component/PackageDetail';
+import PackageDetail from '../Component/package/PackageDetail';
 import { useParams } from 'react-router-dom';
 import { usePackages } from '../hooks/packages/viewPackage';
 

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Carousel from "react-bootstrap/Carousel";
-import Discovery1 from "../Images/Discovery1.jpg";
-import Discovery2 from "../Images/Discovery2.jpg";
-import Discovery3 from "../Images/Discovery3.jpg";
-import Discovery4 from "../Images/Discovery4.jpg";
+import Discovery1 from "../../Images/Discovery1.jpg";
+import Discovery2 from "../../Images/Discovery2.jpg";
+import Discovery3 from "../../Images/Discovery3.jpg";
+import Discovery4 from "../../Images/Discovery4.jpg";
 
 const CarouselSection = () => {
 

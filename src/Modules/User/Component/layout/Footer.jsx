@@ -1,13 +1,13 @@
 import React from 'react';
-import '../css/Footer.css';
+import '../../css/Footer.css';
 import { FaFacebook, FaWhatsapp, FaInstagram, FaYoutube, FaTwitter, FaPinterest, FaLinkedin } from "react-icons/fa";
 import Rating from '@mui/material/Rating';
 import StarIcon from '@mui/icons-material/Star';
-import pay1 from "../Images/pay1.png"; import pay2 from "../Images/pay2.png";
-import pay3 from "../Images/pay3.jpg"; import pay4 from "../Images/pay4.png";
-import pay5 from "../Images/pay5.png"; import pay6 from "../Images/pay6.webp";
-import pay7 from "../Images/pay7.webp"; import pay8 from "../Images/pay8.png"; 
-import pay9 from "../Images/pay9.jpg";
+import pay1 from "../../Images/pay1.png"; import pay2 from "../../Images/pay2.png";
+import pay3 from "../../Images/pay3.jpg"; import pay4 from "../../Images/pay4.png";
+import pay5 from "../../Images/pay5.png"; import pay6 from "../../Images/pay6.webp";
+import pay7 from "../../Images/pay7.webp"; import pay8 from "../../Images/pay8.png"; 
+import pay9 from "../../Images/pay9.jpg";
 
 const Payment = [{ methodes: pay1},{methodes: pay2},{methodes: pay3},{methodes: pay4}
     ,{methodes: pay5},{methodes: pay6},{methodes: pay7},{methodes: pay8},{methodes: pay9}

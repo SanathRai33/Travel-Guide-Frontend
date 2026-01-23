@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import "../css/Navbar.css";
-import LOGO from "../Images/Logo.png";
+import "../../css/Navbar.css";
+import LOGO from "../../Images/Logo.png";
 import { IoIosLogOut } from "react-icons/io";
 import { FaRegUser } from "react-icons/fa";
 import { CiLogin } from "react-icons/ci";
