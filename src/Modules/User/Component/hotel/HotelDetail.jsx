@@ -13,7 +13,6 @@ const HotelDetail = () => {
     const [select, setSelect] = useState(1);
 
     const handleSelect = (n) => {
-        console.log(n)
         setSelect(n)
     }
 
