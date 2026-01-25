@@ -91,7 +91,7 @@ const Packages = () => {
             {
               packages.map((data, i) => (
                 <PackageCard title={data?.title} id={data?._id} image={data?.images[1]} duration={data?.duration}
-                  location={data?.location} basePrice={data?.basePrice} category={data.categories[0]} />
+                  location={data?.location} basePrice={data?.basePrice} finalPrice={data?.discount?.discountedPrice} category={data.categories[0]} />
               ))
             }
           </div>

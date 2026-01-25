@@ -1,38 +1,25 @@
 import React from 'react'
-import { IoCheckmark } from "react-icons/io5";
+import { FaChalkboardTeacher, FaCameraRetro } from "react-icons/fa";
+import { LiaCcVisa } from "react-icons/lia";
+import { GiHotMeal, GiSpookyHouse } from "react-icons/gi";
+import { MdHotel } from "react-icons/md";
+import { TbBus } from "react-icons/tb";
+import { IoAirplane } from "react-icons/io5";
+import { HiOutlineClipboardDocumentCheck } from "react-icons/hi2";
 
 const PackageDetail = ({ description, activity, images, includes }) => {
 
-    const arr = [
-        {
-            title: "Arrival & Beach Welcome",
-            description: "Arrive in Bali, transfer to hotel, beach sunset welcome dinner"
-        },
-        {
-            title: "Ubud Cultural Tour",
-            description: "Visit Monkey Forest, rice terraces, and traditional art markets"
-        },
-        {
-            title: "Temple Discovery",
-            description: "Explore ancient temples including Tanah Lot and Uluwatu"
-        },
-        {
-            title: "Water Sports Adventure",
-            description: "Snorkeling, surfing, and beach relaxation"
-        },
-        {
-            title: "Wellness Day",
-            description: "Spa treatments, yoga session, and healthy cuisine"
-        },
-        {
-            title: "Island Hopping",
-            description: "Visit nearby islands and enjoy water activities"
-        },
-        {
-            title: "Departure",
-            description: "Breakfast and transfer to airport"
-        },
-    ]
+    const categoryIcons = {
+        guide: <FaChalkboardTeacher className="text-blue-600 h-5 w-5" />,
+        visa: <LiaCcVisa className="text-blue-600 h-5 w-5" />,
+        food: <GiHotMeal className="text-blue-600 h-5 w-5" />,
+        accommodation: <MdHotel className="text-blue-600 h-5 w-5" />,
+        photo: <FaCameraRetro className="text-blue-600 h-5 w-5" />,
+        transportation: <TbBus className="text-blue-600 h-5 w-5" />,
+        villa: <GiSpookyHouse className="text-blue-600 h-5 w-5" />,
+        permit: <HiOutlineClipboardDocumentCheck className="text-blue-600 h-5 w-5" />,
+        flight: <IoAirplane className="text-blue-600 h-5 w-5" />,
+    };
 
     return (
         <div>
@@ -42,11 +29,13 @@ const PackageDetail = ({ description, activity, images, includes }) => {
             </div>
             <div className='mb-[32px]'>
                 <h2 className='text-2xl font-bold text-gray-900 mb-3'>What's included</h2>
-                <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-3 gap-y-4'>
                     {
                         includes?.map((inc, i) => (
-                            <div className='flex items-start space-x-3 bg-gray-50'>
-                                <IoCheckmark className='h-5 w-5 text-green-600 flex-shrink-0 mt-0.5' />
+                            <div className='flex items-center space-x-3 bg-gray-50 px-3 rounded-md shadow-sm'>
+                                {
+                                    categoryIcons[inc?.type?.toLowerCase().replaceAll(" ", "")]
+                                }
                                 <span className='text-gray-700'>{inc?.item}</span>
                             </div>
                         ))

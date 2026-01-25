@@ -10,8 +10,6 @@ const PackageView = () => {
   const { id } = useParams();
   const { packages } = usePackages(id);
 
-  console.log("packages", packages)
-
   return (
     <div className='flex flex-col bg-white'>
       <div className='lg:h-96'>

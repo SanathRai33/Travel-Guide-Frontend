@@ -11,8 +11,6 @@ const ViewHeader = ({image, name, location, review, style}) => {
     const goBack = () => {
         navigate(-1)
     }
-
-    console.log(location)
     
     return (
         <div className='w-full relative h-full'>

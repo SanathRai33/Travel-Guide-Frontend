@@ -6,7 +6,7 @@ import { CiCalendar } from "react-icons/ci";
 import { LuMountainSnow } from "react-icons/lu";
 import { FaCity, FaUmbrellaBeach } from "react-icons/fa";
 
-const PackageCard = ({id, image, title, location, duration, basePrice, currency, category}) => {
+const PackageCard = ({id, image, title, location, duration, finalPrice, currency, category}) => {
 
   const navigate = useNavigate();
 
@@ -16,7 +16,7 @@ const PackageCard = ({id, image, title, location, duration, basePrice, currency,
 
   const cur = currency === "INR" ? "₹" : currency === "USD" ? "$" : "₹"
 
-  const price = basePrice > 9999 ? `${(basePrice/1000)}K`  : basePrice
+  const price = finalPrice > 9999 ? `${(finalPrice/1000)}K`  : finalPrice
 
   const categoryIcons = {
     mountain: <LuMountainSnow className="text-blue-600 h-5 w-5" />,
