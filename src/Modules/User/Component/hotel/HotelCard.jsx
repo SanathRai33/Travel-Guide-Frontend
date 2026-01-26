@@ -18,9 +18,6 @@ const HotelCard = ({ id, name, image, location, category, amenities }) => {
     navigate(`/hotels/${id}`)
   }
 
-  console.log("Popular amenities", amenities)
-
-
   const amenitiesIcon = {
     food: <PiForkKnifeFill className="w-8 h-8 bg-blue-50 p-2 rounded-lg hover:bg-blue-200" />,
     parking: <TbParkingCircleFilled className="w-8 h-8 bg-blue-50 p-2 rounded-lg hover:bg-blue-200" />,
