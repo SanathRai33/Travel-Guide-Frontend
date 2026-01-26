@@ -1,8 +1,22 @@
 /* Font Styles */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
+
+/* Fonts */
+
+/* 1. Poppins */
 .poppins {
   font-family: 'Poppins', sans-serif;
   font-weight: 800;
   font-size: 1.2rem;
+}
+
+/* Shapes */
+/* 1. Message */
+.triagle{
+  clip-path: polygon(50% 50%, 0 100%, 100% 100%);
+}
+
+.message:hover .show{
+  display: flex;
 }
