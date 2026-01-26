@@ -1,6 +1,7 @@
+
 import React from "react";
 
-const PackageLoader = () => {
+const CardLoader = () => {
   return (
     <>
       <div className="w-full bg-white shadow-md rounded-lg mb-4 p-6 relative overflow-hidden">
@@ -21,19 +22,6 @@ const PackageLoader = () => {
             </div>
           </div>
         </div>
-        
-        {/* <div className="pt-3 border-t border-gray-200">
-          <div className="h-5 bg-gray-100 rounded w-32 mb-3 relative overflow-hidden">
-            <div className="absolute inset-0 -translate-x-full animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/50 to-transparent"></div>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {[...Array(4)].map((_, i) => (
-              <div key={i} className="h-10 bg-gray-100 rounded-lg w-20 relative overflow-hidden">
-                <div className="absolute inset-0 -translate-x-full animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/50 to-transparent"></div>
-              </div>
-            ))}
-          </div>
-        </div> */}
       </div>
 
       <div className="w-full grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
@@ -71,4 +59,4 @@ const PackageLoader = () => {
   );
 };
 
-export default PackageLoader;
+export default CardLoader;

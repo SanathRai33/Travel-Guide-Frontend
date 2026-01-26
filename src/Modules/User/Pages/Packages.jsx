@@ -1,17 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import '../css/Packages.css';
 import PackageFilter from "../Component/package/PackageFilter";
 import PackageCard from "../Component/package/PackageCard";
 import Header from "../Component/layout/Header";
 import { usePackages } from "../hooks/packages/usePackages";
-import PackageLoader from "../loader/PackageLoader";
+import CardLoader from "../loader/CardLoader";
 
 
 const Packages = () => {
   // const [searchPackage, setSearchPackage] = useState("");
   // const [sortBy, setSortBy] = useState("");
 
-  const { packages, setPackages, loading, error, refetch } = usePackages();
+  const { packages, loading, error, refetch } = usePackages();
 
   // const handleSearchChange = (e) => {
   //   setSearchPackage(e.target.value);
@@ -74,7 +74,7 @@ const Packages = () => {
     return (
       <div className="lg:px-40 lg:py-10 flex justify-center items-center flex-col gap-2 bg-[#F8FAFC] ">
         <Header title="Tour Packages" description="Explore our curated selection of amazing tour packages" />
-        <PackageLoader />
+        <CardLoader />
       </div>
     )
   }

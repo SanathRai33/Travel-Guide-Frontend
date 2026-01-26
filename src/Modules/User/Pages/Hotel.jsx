@@ -4,6 +4,7 @@ import HotelFilter from "../Component/hotel/HotelFilter";
 import Header from "../Component/layout/Header";
 import HotelCard from "../Component/hotel/HotelCard";
 import { useHotels } from '../hooks/hotels/useHotels'
+import CardLoader from "../loader/CardLoader";
 
 const Hotel = () => {
   // const [search, setSearch] = useState("");
@@ -63,7 +64,14 @@ const Hotel = () => {
     )
   }
 
-
+  if (loading) {
+    return (
+      <div className="lg:px-40 lg:py-10 flex justify-center items-center flex-col gap-2 bg-[#F8FAFC] ">
+        <Header title="Hotels" description="Find the perfect accommodation for your stay" />
+        <CardLoader />
+      </div>
+    )
+  }
 
   return (
     <div className="lg:px-40 lg:py-10 flex justify-center items-center flex-col gap-2 bg-[#F8FAFC]">
