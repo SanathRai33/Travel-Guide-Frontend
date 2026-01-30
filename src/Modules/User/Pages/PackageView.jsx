@@ -1,5 +1,5 @@
 import React from 'react'
-import ViewHeader from '../Component/ViewHeader';
+import ViewHeader from '../Component/layout/ViewHeader';
 import PaymentForm from '../Component/PaymentForm';
 import PackageDetail from '../Component/package/PackageDetail';
 import { useParams } from 'react-router-dom';

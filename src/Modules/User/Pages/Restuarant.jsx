@@ -16,38 +16,18 @@ import errorAnimation from "../Images/error.json";
 import Header from "../Component/layout/Header";
 import RestaurantFilter from "../Component/restaurant/RestaurantFilter";
 import RestaurantCard from "../Component/restaurant/RestaurantCard";
+import { useRestuarants } from "../hooks/restuarants/useRestuarants";
 
 const Restaurant = () => {
   const [resData, setResData] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
   const [search, setSearch] = useState("");
   const [minRating, setMinRating] = useState(0);
   const [sortOrder, setSortOrder] = useState("");
   const [selectedFacilities, setSelectedFacilities] = useState([]);
 
-  useEffect(() => {
-    (async () => {
-      try {
-        setLoading(true);
-        const response = await axios.get(`http://localhost:7002/restaurant/get`);
-        setResData(response.data);
-        console.log(response.data);
-      } catch (error) {
-        if (axios.isCancel(error)) {
-          console.log(`Request cancelled ${error.message}`);
-          return;
-        }
-        setError(true);
-      } finally {
-        setLoading(false);
-      }
-    })();
-  }, []);
+  const { restuarants } = useRestuarants();
 
-  if (loading) {
-    return <div>Loading</div>
-  }
+  console.log(restuarants)
 
   const handleFacilityChange = (facility) => {
     setSelectedFacilities((prev) =>
@@ -82,10 +62,15 @@ const Restaurant = () => {
         <RestaurantFilter/>
       </div>
       <div className="w-full grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
+        {
+          restuarants.map((res)=>(
+            <RestaurantCard/>
+          ))
+        }
+        {/* <RestaurantCard />
         <RestaurantCard />
         <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
+        <RestaurantCard /> */}
       </div>
 
 

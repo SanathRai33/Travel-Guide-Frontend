@@ -4,7 +4,7 @@ import { FaArrowLeftLong } from "react-icons/fa6";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaStar } from "react-icons/fa6";
 
-const ViewHeader = ({image, name, location, review, style}) => {
+const ViewHeader = ({image, name, location, review, ambition}) => {
 
     const navigate = useNavigate();
 
@@ -23,7 +23,7 @@ const ViewHeader = ({image, name, location, review, style}) => {
                 </button>
                 <div className='flex gap-3 items-start'>
                     <h1 className='text-4xl font-bold text-white mb-2'>{name}</h1>
-                    <span className='px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm'>{style}</span>
+                    <span className='px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm'>{ambition}</span>
                 </div>
                 <div className='flex items-center space-x-4 text-white'>
                     <div className='flex items-end'>
