@@ -1,24 +1,25 @@
 import { useEffect, useState } from "react";
 import axiosInstance from "../../axios/axiosInstance";
 
-export const useRestuarants = () => {
+export const useRestaurants = () => {
 
-    const [restuarants, setRestuarants] = useState([]);
+    const [restaurants, setRestaurants] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
     useEffect(() => {
-        fetchRestuarants();
+        fetchRestaurants();
     }, [])
 
-    const fetchRestuarants = async () => {
+    const fetchRestaurants = async () => {
         setLoading(true);
         setError(false);
         try {
-            const res = await axiosInstance.get('restuarants/'
+            const res = await axiosInstance.get('restaurants'
                 // { withCredentials: true, }
             );
-            setRestuarants(res?.data?.data);
+            console.log("This is api", res.data)
+            setRestaurants(res?.data?.data);
         } catch (error) {
             setError(true)
             console.error("Auth check failed:", error);
@@ -27,6 +28,6 @@ export const useRestuarants = () => {
         }
     };
 
-    return { restuarants, setRestuarants, loading, error, refetch: fetchRestuarants }
+    return { restaurants, setRestaurants, loading, error, refetch: fetchRestaurants }
 
 }

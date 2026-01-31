@@ -16,7 +16,7 @@ import errorAnimation from "../Images/error.json";
 import Header from "../Component/layout/Header";
 import RestaurantFilter from "../Component/restaurant/RestaurantFilter";
 import RestaurantCard from "../Component/restaurant/RestaurantCard";
-import { useRestuarants } from "../hooks/restuarants/useRestuarants";
+import { useRestaurants } from "../hooks/restaurants/useRestaurants";
 
 const Restaurant = () => {
   const [resData, setResData] = useState([]);
@@ -25,9 +25,9 @@ const Restaurant = () => {
   const [sortOrder, setSortOrder] = useState("");
   const [selectedFacilities, setSelectedFacilities] = useState([]);
 
-  const { restuarants } = useRestuarants();
+  const { restaurants } = useRestaurants();
 
-  console.log(restuarants)
+  console.log(restaurants)
 
   const handleFacilityChange = (facility) => {
     setSelectedFacilities((prev) =>
@@ -63,7 +63,7 @@ const Restaurant = () => {
       </div>
       <div className="w-full grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
         {
-          restuarants.map((res)=>(
+          restaurants.map((res)=>(
             <RestaurantCard/>
           ))
         }
