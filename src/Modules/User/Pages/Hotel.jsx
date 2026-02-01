@@ -39,18 +39,18 @@ const Hotel = () => {
 
   if (error) {
     return (
-      <div className="lg:px-40 lg:py-10 flex justify-center items-center flex-col gap-2 h-full">
+      <div className="flex flex-col items-center justify-center h-full gap-2 lg:px-40 lg:py-10">
         <Header title="Hotels" description="Find the perfect accommodation for your stay" />
         <div className="flex flex-col items-center text-center bg-[#FFFFFF] w-[90%] h-full lg:py-20 rounded-xl shadow-sm">
-          <div className="flex h-14 w-14 items-center justify-center rounded-full bg-red-50">
-            <span className="text-red-500 text-2xl">⚠</span>
+          <div className="flex items-center justify-center rounded-full h-14 w-14 bg-red-50">
+            <span className="text-2xl text-red-500">⚠</span>
           </div>
 
           <h2 className="mt-6 text-xl font-semibold text-red-600">
             Something went wrong
           </h2>
 
-          <p className="mt-2 max-w-md text-red-500">
+          <p className="max-w-md mt-2 text-red-500">
             We couldn’t load tour hotels right now. Please check your connection or try again.
           </p>
 
@@ -76,10 +76,10 @@ const Hotel = () => {
   return (
     <div className="lg:px-40 lg:py-10 flex justify-center items-center flex-col gap-2 bg-[#F8FAFC]">
       <Header title="Hotels" description="Find the perfect accommodation for your stay" />
-      <div className="w-full bg-white shadow-md rounded-lg mb-4">
+      <div className="w-full mb-4 bg-white rounded-lg shadow-md">
         <HotelFilter />
       </div>
-      <div className="w-full grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
+      <div className="grid w-full grid-cols-1 gap-6 lg:grid-cols-3 md:grid-cols-2">
         {
           hotels &&
           hotels.map((hotel, i) => (

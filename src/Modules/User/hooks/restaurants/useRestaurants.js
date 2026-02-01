@@ -15,10 +15,10 @@ export const useRestaurants = () => {
         setLoading(true);
         setError(false);
         try {
-            const res = await axiosInstance.get('restaurants'
+            const res = await axiosInstance.get('restaurants/'
                 // { withCredentials: true, }
             );
-            console.log("This is api", res.data)
+            console.log("This is api", res?.data)
             setRestaurants(res?.data?.data);
         } catch (error) {
             setError(true)
