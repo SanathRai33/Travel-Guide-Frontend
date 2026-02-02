@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Card, CardContent, CardMedia, Typography, Button, Grid, Chip, Box, Container, TextField, Select, MenuItem, FormControlLabel, Checkbox, } from "@mui/material";
+import { Container } from "@mui/material";
 import "../css/Restaurant.css";
 import Header from "../Component/layout/Header";
 import RestaurantFilter from "../Component/restaurant/RestaurantFilter";
@@ -13,7 +13,7 @@ const Restaurant = () => {
   // const [sortOrder, setSortOrder] = useState("");
   // const [selectedFacilities, setSelectedFacilities] = useState([]);
 
-  const { restaurants, loading } = useRestaurants();
+  const { restaurants, loading, error } = useRestaurants();
 
   console.log(restaurants)
 
@@ -43,6 +43,33 @@ const Restaurant = () => {
   //     )
   //   : [];
 
+  
+  if (error) {
+    return (
+      <div className="flex flex-col items-center justify-center h-full gap-2 lg:px-40 lg:py-10">
+        <Header title="Restaurants" description="Find the perfect accommodation for your stay" />
+        <div className="flex flex-col items-center text-center bg-[#FFFFFF] w-[90%] h-full lg:py-20 rounded-xl shadow-sm">
+          <div className="flex items-center justify-center rounded-full h-14 w-14 bg-red-50">
+            <span className="text-2xl text-red-500">⚠</span>
+          </div>
+
+          <h2 className="mt-6 text-xl font-semibold text-red-600">
+            Something went wrong
+          </h2>
+
+          <p className="max-w-md mt-2 text-red-500">
+            We couldn’t load tour restaurants right now. Please check your connection or try again.
+          </p>
+
+          <button onClick={handleReload}
+            className="mt-6 rounded-lg bg-blue-600 px-6 py-2.5 text-white font-medium hover:bg-blue-700 transition"
+          >
+            Retry
+          </button>
+        </div>
+      </div>
+    )
+  }
 
   if (loading) {
     return (
