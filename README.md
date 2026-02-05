@@ -1,3 +1,48 @@
+# TravelGuide — Frontend
+
+Short description
+- React single-page application for the TravelGuide project (user + admin UI).
+
+Tech
+- React
+- Tailwind CSS
+
+Prerequisites
+- Node.js (LTS) and npm or yarn
+
+Quick start
+```bash
+cd client
+npm install
+npm start
+```
+
+Build
+```bash
+npm run build
+```
+
+Tests
+```bash
+npm test
+```
+
+Environment
+- Copy or create `.env` in `client/`.
+- Common env variables (example):
+  - `REACT_APP_API_BASE_URL` — backend API base URL (e.g. http://localhost:5000/api)
+
+Project structure (high-level)
+- `src/Modules/Admin` — admin components, pages, routes
+- `src/Modules/User` — user components, pages, axios instance
+- `public/` — static assets
+
+Notes
+- The frontend expects the backend API to be running and reachable via `REACT_APP_API_BASE_URL`.
+- Tailwind config is in `tailwind.config.js`.
+
+Contact
+- See project root for contribution notes or ask the repository maintainer for details.
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
