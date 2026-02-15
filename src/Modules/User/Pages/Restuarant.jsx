@@ -13,9 +13,7 @@ const Restaurant = () => {
   // const [sortOrder, setSortOrder] = useState("");
   // const [selectedFacilities, setSelectedFacilities] = useState([]);
 
-  const { restaurants, loading, error } = useRestaurants();
-
-  console.log(restaurants)
+  const { restaurants, loading, error, refetch } = useRestaurants();
 
   // const handleFacilityChange = (facility) => {
   //   setSelectedFacilities((prev) =>
@@ -42,6 +40,10 @@ const Restaurant = () => {
   //           : 0
   //     )
   //   : [];
+
+  const handleReload = () => {
+    refetch()
+  }
 
   
   if (error) {
@@ -80,6 +82,8 @@ const Restaurant = () => {
     )
   }
 
+  console.log("amenities", restaurants?.amenities);
+
   return (
     <Container className="lg:px-40 lg:py-10 flex justify-center items-center flex-col gap-2 bg-[#F8FAFC]">
       <Header title="Restaurants" description="Discover exceptional dining experiences" />
@@ -88,14 +92,12 @@ const Restaurant = () => {
       </div>
       <div className="grid w-full grid-cols-1 gap-6 lg:grid-cols-3 md:grid-cols-2">
         {
-          restaurants.map((res) => (
-            <RestaurantCard />
+          restaurants?.map((res, idx) => (
+            <RestaurantCard key={idx} id={res?._id} name={res?.name} location={res?.location?.address}
+            image={res?.featuredImage} price={res?.priceTier?.averagePricePerPerson} amenities={res?.amenities} 
+            badge={res?.primaryCuisine} />
           ))
         }
-        {/* <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard /> */}
       </div>
 
 
