@@ -10,7 +10,7 @@ import { GoPeople } from "react-icons/go";
 import { MdOutlinePhone } from "react-icons/md";
 import { FaRegClock } from "react-icons/fa6";
 
-const RestaurantDetail = () => {
+const RestaurantDetail = ({ description, amenities, images }) => {
 
     const [select, setSelect] = useState(1);
 
@@ -55,48 +55,47 @@ const RestaurantDetail = () => {
     return (
         <div>
             <div className='mb-[32px]'>
-                <h2 className='text-2xl font-bold text-gray-900 mb-3'>About This Restaurant</h2>
-                <p className='text-gray-700 leading-relaxed m-0'>
-                    An exquisite fine dining experience featuring authentic French cuisine prepared by Michelin-trained chefs.
-                    Our restaurant combines traditional recipes with modern culinary artistry in an elegant atmosphere.
+                <h2 className='mb-3 text-2xl font-bold text-gray-900'>About This Restaurant</h2>
+                <p className='m-0 leading-relaxed text-gray-700'>
+                    {description}
                 </p>
             </div>
 
             <div className='grid grid-cols-1 md:grid-cols-2 gap-6 mb-[32px]'>
                 <div className='bg-gray-50 rounded-lg p-[20px]'>
-                    <div className='flex items-center space-x-3 mb-2'>
-                        <MdOutlinePhone className='h-5 w-5 text-blue-600' />
-                        <h3 className='font-semibold text-gray-900 text-base mb-0'>Phone</h3>
+                    <div className='flex items-center mb-2 space-x-3'>
+                        <MdOutlinePhone className='w-5 h-5 text-blue-600' />
+                        <h3 className='mb-0 text-base font-semibold text-gray-900'>Phone</h3>
                     </div>
-                    <p className='text-gray-700 m-0'>+91 8938284463</p>
+                    <p className='m-0 text-gray-700'>+91 8938284463</p>
                 </div>
                 <div className='bg-gray-50 rounded-lg p-[20px]'>
-                    <div className='flex items-center space-x-3 mb-2'>
-                        <FaRegClock className='h-5 w-5 text-blue-600' />
-                        <h3 className='font-semibold text-gray-900 text-base mb-0'>Hours</h3>
+                    <div className='flex items-center mb-2 space-x-3'>
+                        <FaRegClock className='w-5 h-5 text-blue-600' />
+                        <h3 className='mb-0 text-base font-semibold text-gray-900'>Hours</h3>
                     </div>
-                    <p className='text-gray-700 m-0'>Mon-Sat: 6:00 PM - 11:00 PM, Sun: Closed</p>
+                    <p className='m-0 text-gray-700'>Mon-Sat: 6:00 PM - 11:00 PM, Sun: Closed</p>
                 </div>
             </div>
 
             <div className='mb-[32px]'>
-                <h2 className='text-2xl font-bold text-gray-900 mb-3'>House Specialties</h2>
+                <h2 className='mb-3 text-2xl font-bold text-gray-900'>House Specialties</h2>
                 <div className='flex flex-wrap gap-3'>
-                    <span className='px-4 py-2 bg-orange-100 text-orange-800 rounded-full font-medium'>Coq au Vin</span>
-                    <span className='px-4 py-2 bg-orange-100 text-orange-800 rounded-full font-medium'>Bouillabaisse</span>
-                    <span className='px-4 py-2 bg-orange-100 text-orange-800 rounded-full font-medium'>Ratatouille</span>
-                    <span className='px-4 py-2 bg-orange-100 text-orange-800 rounded-full font-medium'>Crème Brûlée</span>
+                    <span className='px-4 py-2 font-medium text-orange-800 bg-orange-100 rounded-full'>Coq au Vin</span>
+                    <span className='px-4 py-2 font-medium text-orange-800 bg-orange-100 rounded-full'>Bouillabaisse</span>
+                    <span className='px-4 py-2 font-medium text-orange-800 bg-orange-100 rounded-full'>Ratatouille</span>
+                    <span className='px-4 py-2 font-medium text-orange-800 bg-orange-100 rounded-full'>Crème Brûlée</span>
                 </div>
             </div>
 
             <div className='mb-[32px]'>
-                <h2 className='text-2xl font-bold text-gray-900 mb-3'>Features & Amenities</h2>
-                <div className='grid grid-cols-1 md:grid-cols-2 gap-3'>
+                <h2 className='mb-3 text-2xl font-bold text-gray-900'>Features & Amenities</h2>
+                <div className='grid grid-cols-1 gap-3 px-4 md:grid-cols-2 lg:grid-cols-3'>
                     {
-                        features.map((fet, i) => (
+                        amenities?.map((fet, i) => (
                             <div className='flex items-center space-x-3'>
-                                <GiKnifeFork className='h-5 w-5 text-orange-600' />
-                                <span className='text-gray-700 text-sm'>{fet}</span>
+                                <GiKnifeFork className='w-5 h-5 text-orange-600' />
+                                <span className='text-sm text-gray-700'>{fet?.name}</span>
                             </div>
                         ))
                     }
@@ -104,12 +103,12 @@ const RestaurantDetail = () => {
             </div>
 
             <div className='mb-[32px]'>
-                <h2 className='text-2xl font-bold text-gray-900 mb-3'>Menu</h2>
+                <h2 className='mb-3 text-2xl font-bold text-gray-900'>Menu</h2>
                 <div className='space-y-6'>
                     <div>
-                        <h3 className='text-xl font-semibold text-gray-900 mb-3 border-b pb-2'>Appetizers</h3>
+                        <h3 className='pb-2 mb-3 text-xl font-semibold text-gray-900 border-b'>Appetizers</h3>
                         <div className='space-y-4'>
-                            <div className='flex justify-between items-start'>
+                            <div className='flex items-start justify-between'>
                                 <div class="flex-1">
                                     <h4 class="font-medium text-gray-900 text-base m-0">French Onion Soup</h4>
                                     <p class="text-sm text-gray-600 m-0">Classic soup with caramelized onions and gruyere</p>
@@ -117,7 +116,7 @@ const RestaurantDetail = () => {
                                 <span class="font-semibold text-gray-900 ml-4">$18</span>
                             </div>
 
-                            <div className='flex justify-between items-start'>
+                            <div className='flex items-start justify-between'>
                                 <div class="flex-1">
                                     <h4 class="font-medium text-gray-900 text-base m-0">Escargot</h4>
                                     <p class="text-sm text-gray-600 m-0">Burgundy snails in garlic butter</p>
@@ -125,7 +124,7 @@ const RestaurantDetail = () => {
                                 <span class="font-semibold text-gray-900 ml-4">$22</span>
                             </div>
 
-                            <div className='flex justify-between items-start'>
+                            <div className='flex items-start justify-between'>
                                 <div class="flex-1">
                                     <h4 class="font-medium text-gray-900 text-base m-0">Foie Gras</h4>
                                     <p class="text-sm text-gray-600 m-0">Pan-seared foie gras with fig compote</p>
@@ -138,12 +137,13 @@ const RestaurantDetail = () => {
             </div>
 
             <div className='mb-[32px]'>
-                <h2 className='text-2xl font-bold text-gray-900 mb-3'>Gallery</h2>
-                <div className='grid grid-cols-2 md:grid-cols-4 gap-4'>
-                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Ph" className='w-full h-40 object-cover rounded-lg hover:opacity-90 cursor-pointer transition-opacity shadow-lg' />
-                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Ph" className='w-full h-40 object-cover rounded-lg hover:opacity-90 cursor-pointer transition-opacity shadow-lg' />
-                    <img src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?q=80&w=710&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Ph" className='w-full h-40 object-cover rounded-lg hover:opacity-90 cursor-pointer transition-opacity shadow-lg' />
-                    <img src="https://plus.unsplash.com/premium_photo-1675252369719-dd52bc69c3df?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Ph" className='w-full h-40 object-cover rounded-lg hover:opacity-90 cursor-pointer transition-opacity shadow-lg' />
+                <h2 className='mb-3 text-2xl font-bold text-gray-900'>Gallery</h2>
+                <div className='grid grid-cols-2 gap-4 md:grid-cols-4'>
+                    {
+                        images?.map((img, i) => (
+                            <img key={i} src={img?.url} alt="Gallery" className='object-cover w-full h-40 transition-opacity rounded-lg shadow-lg cursor-pointer hover:opacity-90' />
+                        ))
+                    }
                 </div>
             </div>
         </div>
